@@ -1,0 +1,18 @@
+Performance evaluation of:
+
+- Retrieval of units from Wikidata items (Pywikibot or SPARQL)
+- Retrieval of units from Wikipedia articles (AnnoMathTeX or unsupervised)
+- Generation of identifier values
+- Consistency check of identifier units
+- Solution assessment (value or unit wrong)
+- Rearranging equations using CAS
+
+For MathMLben Formula Concept testset check:
+(mathmlben.wmflabs.org - GoldID 310-375)
+
+- How many identifier items have unit properties? Which ones? (list the properties, discuss their strengths and weaknesses)
+- Can the unit information be used to make a unit consistency check for left- and right-hand side of the formula?
+- How to (semi-)automatically calculate/retrieve reasonable values for the identifiers?
+- How many constants can be retrieved from Wikidata? Just values or units also?
+- What are the issues in each step?
+- How can they be adressed?
