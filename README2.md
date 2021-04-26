@@ -14,6 +14,7 @@ Useful tools:
 * [Recordit: record your screen and save it to a GIF](http://recordit.co/)
 ---
 ## Project title
+PhysWikiQuiz<< - a Physics Question Generation and Interrogation System
 A short description of the project’s purpose and main functionality. **What** does the project do?
 
 ## Motivation
