@@ -1,7 +1,7 @@
 import requests
 
 def get_concept_name(qid):
-    """Description."""
+    """Retrieve concept name from Wikidata item label."""
     item = requests.get("https://wikidata.org/entity/" + qid)
     item = item.json()['entities'][qid]
     name = item['labels']['en']['value']
