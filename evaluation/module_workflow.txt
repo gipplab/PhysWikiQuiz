@@ -1,0 +1,28 @@
+QID: Q11376
+
+-> a = dv/dt
+
+Module 1:
+-> \mathsf{L} \mathsf{T}^{-2}
+
+Module 2:
+-> 
+F = m a
+m = F/a
+a = F/m
+
+Module 3:
+F = m a: {6,2,3}; {6,3,2}, ...
+
+Module 4:
+"What is the force F given mass m=2 kg and acceleration a=3m/s^2?"
+"What is the mass..."
+"What is the acceleration...
+
+User input
+
+Module 5:
+check solution unit
+
+Module 6:
+check solution value
