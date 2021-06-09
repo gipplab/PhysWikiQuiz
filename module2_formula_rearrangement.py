@@ -1,3 +1,3 @@
-def get_random_formula_rearrangement(defining_formula):
+def get_random_formula_rearrangements(defining_formula):
     """Description."""
-    return formula_rearrangement
+    return formula_rearrangements
