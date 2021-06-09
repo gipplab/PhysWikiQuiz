@@ -6,17 +6,18 @@ import module4_question_text_generation as module4
 import module5_solution_value_and_unit_check as module5
 
 # Instructor input
-qid = input("Input formula question QID")
+qid = input("Input formula question QID\n")
 # Formula question QID: 'Q11376'
-concept_name = module0.get_concept_name(qid)
-print('Generating physics formula question for >>{}<<...'.format(concept_name))
+item = module0.get_Wikidata_item(qid)
+concept_name = module0.get_concept_name(item)
+print('Generating physics formula question for >>{}<<...\n'.format(concept_name))
 # System output: 'Generating physics formula question for >>acceleration<<...'
 
 # Module 0: Formula and Identifier Retrieval
-defining_formula = module0.get_defining_formula(qid)
+defining_formula = module0.get_defining_formula(item)
 # 'defining formula' (P2534)
 # -> 'a = dv/dt'
-formula_identifiers = module0.get_formula_identifiers(qid)
+formula_identifiers = module0.get_formula_identifiers(item)
 # a: 'acceleration' (Q11376)
 # v: 'velocity' (Q11465)
 # t: 'duration' (Q2199864)
