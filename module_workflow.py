@@ -15,9 +15,9 @@ import module5_solution_value_and_unit_check as module5
 # INSTRUCTOR INPUT
 
 # Module 0.0: Input formula question QID
-#qid = input('Input formula question QID:')
+qid = input('Input formula question QID:')
 # Example
-qid = 'Q11376'
+#qid = 'Q11376'
 print('\nInput formula question QID: ',qid)
 
 # Get item from QID
@@ -56,11 +56,11 @@ formula_identifiers = module0.get_formula_identifiers(item)
 #######################################
 
 print('Retrieving formula identifier units...\n')
-#formula_unit_dimensions = module1.get_formula_unit_dimensions(item)
-#identifier_unit_dimensions = module1.get_identifier_unit_dimensions(formula_unit_dimensions,formula_identifiers)
+formula_unit_dimensions = module1.get_formula_unit_dimensions(item)
+#identifier_unit_dimensions = module1.get_identifier_unit_dimensions(defining_formula,formula_identifiers,formula_unit_dimensions)
 # Example
 # 'ISQ dimension' property (P4020) = 'LT^-2
-formula_unit_dimensions = '\mathsf{L} \mathsf{T}^{-2}'
+#formula_unit_dimensions = '\mathsf{L} \mathsf{T}^{-2}'
 identifier_unit_dimensions = ['m/s^2', 'm/s', 's']
 
 ###################################
@@ -68,7 +68,7 @@ identifier_unit_dimensions = ['m/s^2', 'm/s', 's']
 ###################################
 
 print('Generating formula rearrangements...\n')
-# Get formula rearrangements using Computer Algebra Systems (CAS)
+# Get formula rearrangements using Computer Algebra Systems (CAS), maybe SymPy
 #formula_rearrangements = module2.get_random_formula_rearrangements(defining_formula)
 # Example
 formula_rearrangements = ['a = v/t', 'v = a t','t = v/a']

@@ -6,7 +6,7 @@ def get_formula_unit_dimensions(Wikidata_item):
 
     return formula_unit_dimensions
 
-def get_identifier_unit_dimensions(formula_unit_dimensions,formula_identifiers):
+def get_identifier_unit_dimensions(defining_formula,formula_identifiers,formula_unit_dimensions):
     """Get ISQ unit dimensions of identifiers."""
     identifier_unit_dimensions = []
     for formula_identifier in formula_identifiers:
