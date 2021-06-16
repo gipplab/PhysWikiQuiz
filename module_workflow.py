@@ -15,9 +15,9 @@ import module5_solution_value_and_unit_check as module5
 # INSTRUCTOR INPUT
 
 # Module 0.0: Input formula question QID
-qid = input('Input formula question QID:')
+#qid = input('Input formula question QID:')
 # Example
-#qid = 'Q11376'
+qid = 'Q11376'
 print('\nInput formula question QID: ',qid)
 
 # Get item from QID

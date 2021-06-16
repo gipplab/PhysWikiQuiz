@@ -1,3 +1,5 @@
+from module0_formula_and_identifier_retrieval import get_Wikidata_item
+
 def get_formula_unit_dimensions(Wikidata_item):
     """Get ISQ unit dimensions of formula."""
 
