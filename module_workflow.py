@@ -1,6 +1,14 @@
 #TODO: slow down print out process
 #TODO: print out ALL retrieved variables
 
+# ISSUES:
+#TODO: module3.get_random_identifier_values
+    # strToSympy parsing \frac, etc.
+#TODO: module1.convert_unit_dimensions:
+    # convert units from \mathsf{X}^{Y} to SI units
+#TODO: module5.check_value:
+    # allow percentage float tolerance for answer value
+
 import module0_formula_and_identifier_retrieval as module0
 import module1_identifier_unit_retrieval as module1
 import module2_formula_rearrangement as module2
@@ -17,7 +25,7 @@ import module5_solution_value_and_unit_check as module5
 # Module 0.0: Input formula question QID
 #qid = input('Input formula question QID:')
 # Example
-qid = 'Q11376'
+qid = 'Q11376'#: 'acceleration'
 print('\nInput formula question QID: ',qid)
 
 # Get item from QID
@@ -56,12 +64,13 @@ formula_identifiers = module0.get_formula_identifiers(item)
 #######################################
 
 print('Retrieving formula identifier units...\n')
-formula_unit_dimensions = module1.get_formula_unit_dimensions(item)
-#identifier_unit_dimensions = module1.get_identifier_unit_dimensions(defining_formula,formula_identifiers,formula_unit_dimensions)
+formula_unit_dimension = module1.get_formula_unit_dimension(item)
+identifier_unit_dimensions = module1.get_identifier_unit_dimensions(item)
+formula_identifiers = module1.update_identifiers_dict(formula_identifiers,formula_unit_dimension,identifier_unit_dimensions)
 # Example
 # 'ISQ dimension' property (P4020) = 'LT^-2
 #formula_unit_dimensions = '\mathsf{L} \mathsf{T}^{-2}'
-identifier_unit_dimensions = ['m/s^2', 'm/s', 's']
+#identifier_unit_dimensions = ['\\mathsf{L} \\mathsf{T}^{-1}', '\\mathsf{T}']
 
 ###################################
 # Module 2: Formula Rearrangement #
@@ -78,10 +87,10 @@ formula_rearrangements = ['a = v/t', 'v = a t','t = v/a']
 #########################################
 
 print('Generating random identifier values...\n')
-#identifier_values = module3.get_random_identifier_values(formula_rearrangements)
+identifier_values = module3.get_random_identifier_values(formula_identifiers,defining_formula)
 # (randomize)
 # Example
-identifier_values = (3,6,2)#, [(6,3,2), (2,6,3)] # (a,v,t)
+#identifier_values = [3,6,2]#, [6,3,2], [2,6,3] # [a,v,t]
 
 ######################################
 # Module 4: Question Text Generation #
@@ -117,16 +126,16 @@ print(f'Answer unit: {answer_unit}\n')
 
 print('Check answer value and unit...\n')
 # check solution value
-#value_correct = module5.check_value(formula_rearrangements,answer_value)
-value_correct = True
+value_correct = module5.check_value(identifier_values,answer_value)
+#value_correct = True
 if value_correct:
     print('Value correct!')
 else:
     print('Value incorrect!')
 # 'correct'
 # check solution unit
-#unit_correct = module5.check_unit(formula_rearrangements,answer_value)
-unit_correct = True
+unit_correct = module5.check_unit(formula_unit_dimension,answer_unit)
+#unit_correct = True
 if unit_correct:
     print('Unit correct!')
 else:

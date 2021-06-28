@@ -7,8 +7,9 @@ def get_question_text(formula_identifiers,identifier_values,identifier_unit_dime
     for identifier_index in range(len(formula_identifiers)):
         identifier_name = formula_identifiers[identifier_index][1]
         identifier_symbol = formula_identifiers[identifier_index][0]
-        identifier_value = identifier_values[identifier_index]
-        identifier_unit = identifier_unit_dimensions[identifier_index]
+        identifier_unit = formula_identifiers[identifier_index][2]
+        #identifier_unit = identifier_unit_dimensions[identifier_index]
+        identifier_value = str(identifier_values[identifier_index])
         identifier_information.append((identifier_name,identifier_symbol,identifier_value,identifier_unit))
 
     # Generate question text
