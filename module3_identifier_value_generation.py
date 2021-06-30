@@ -18,13 +18,14 @@ def get_random_identifier_values(formula_identifiers,defining_formula):
         rhs_identifier_values.append(random.randint(lower_val_limit,upper_val_limit))
 
     # generate resulting value for left-hand side identifier
-    #defining_formula = 'a=v/t'
+    defining_formula = 'a=v/t'
     # TODO: generalize
     identifiers_sympy = sympy.symbols(' '.join([identifier[0] for identifier in formula_identifiers]))
     #identifiers_sympy = sympy.symbols('a v t')
 
     formula_sympy = latex2sympy.strToSympy(defining_formula)
 
+    # substitute generated random values to calculate left-hand side
     identifier_index = 0
     for identifier_sympy in identifiers_sympy:
         if identifier_index != 0:#lhs identifier
