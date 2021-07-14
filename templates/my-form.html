@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>PhysWikiQuiz</title>
+
+    <img src="PhysWikiQuiz-Logo.png" alt="PhysWikiQuiz-Logo"></img>
+
+    <h1>PhysWikiQuiz</h1>
+    <h3>Physics Question Generation and Interrogation System</h3>
+    <h5>Enter Formula Concept Wikidata QID</h5>
+
+    <form method="POST">
+    <input name="qid" value="{{ qid }}">
+        <button type="submit">Generate</button>
+    </form>
+
+    <h5>Formula Concept Question:</h5>
+
+    <form method="POST">
+    <label name="question" value="{{ question }}"></label>
+    </form>
+
+    <h5>Enter Formula Concept Question Answer:</h5>
+
+    <form method="POST">
+    <input name="answer">
+        <button type="submit">Answer</button>
+    </form>
+
+</head>
+<body>
+
+</body>
+</html>

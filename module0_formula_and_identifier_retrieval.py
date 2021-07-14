@@ -37,11 +37,11 @@ def get_formula_identifiers(Wikidata_item):
         identifier_symbol = Wikidata_item['claims'][left_hand_side_symbol_property_key][0]['mainsnak']['datavalue']['value']
     except:
         identifier_symbol = None
+    # Add left-hand side identifier to list
     identifier_property_tuples.append((identifier_symbol, identifier_name))
 
     # Retrieve right-hand side identifiers
-    identifier_property_keys = ['P527','P4934'] # 'has part', 'calculated from'
-    for property in identifier_property_keys:
+    for property in ['P527','P4934']: # 'has part', 'calculated from'
         try:
             properties_object = Wikidata_item['claims'][property]
         except:
@@ -49,7 +49,11 @@ def get_formula_identifiers(Wikidata_item):
     for identifier_propery in properties_object:
 
         # get identifier symbol
-        identifier_symbol = identifier_propery['qualifiers']['P7235'][0]['datavalue']['value']
+        for property in ['P7235','P416']:
+            try:
+                identifier_symbol = identifier_propery['qualifiers'][property][0]['datavalue']['value']
+            except:
+                pass
 
         # get identifier name
         identifier_item_qid = identifier_propery['mainsnak']['datavalue']['value']['id']

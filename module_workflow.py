@@ -25,7 +25,11 @@ import module5_solution_value_and_unit_check as module5
 # Module 0.0: Input formula question QID
 #qid = input('Input formula question QID:')
 # Example
-qid = 'Q11376'#: 'acceleration'
+#qid = 'Q11376'#: 'acceleration'
+#qid = 'Q11652'# 'frequency':
+#qid = 'Q35875'# 'mass-energy equivalence'
+#qid = 'Q2397319'# 'Newton's second law of motion for constant mass'
+qid = 'Q3711325'# 'speed'
 print('\nInput formula question QID: ',qid)
 
 # Get item from QID
@@ -80,7 +84,7 @@ print('Generating formula rearrangements...\n')
 # Get formula rearrangements using Computer Algebra Systems (CAS), maybe SymPy
 #formula_rearrangements = module2.get_random_formula_rearrangements(defining_formula)
 # Example
-formula_rearrangements = ['a = v/t', 'v = a t','t = v/a']
+#formula_rearrangements = ['a = v/t', 'v = a t','t = v/a']
 
 #########################################
 # Module 3: Identifier Value Generation #
@@ -111,9 +115,11 @@ print(question_text)
 # STUDENT INPUT
 
 print('Get student answer input...\n')
-identifier_name, identifier_symbol = module5.get_lhs_identifier_properties(formula_rearrangements,formula_identifiers)
-answer_input = input(f'{identifier_name} {identifier_symbol} = ?')
-answer_value,answer_unit = module5.get_answer_value_and_unit(answer_input)
+identifier_name, identifier_symbol = module5.get_lhs_identifier_properties(formula_identifiers)
+answer_unit = None
+while answer_unit == None:
+    answer_input = input(f'{identifier_name} {identifier_symbol} = ?')
+    answer_value,answer_unit = module5.get_answer_value_and_unit(answer_input)
 print('\nParse answer input...\n')
 print(f'Answer value: {answer_value}')
 print(f'Answer unit: {answer_unit}\n')
@@ -126,20 +132,27 @@ print(f'Answer unit: {answer_unit}\n')
 
 print('Check answer value and unit...\n')
 # check solution value
-value_correct = module5.check_value(identifier_values,answer_value)
+solution_value = identifier_values[0]
+value_correct = module5.check_value(solution_value,answer_value)
 #value_correct = True
+print(f'Solution value: {solution_value}')
+print(f'Answer value: {answer_value}')
 if value_correct:
-    print('Value correct!')
+    print('Value answer correct!')
 else:
-    print('Value incorrect!')
+    print('Value answer incorrect!')
 # 'correct'
+print()
 # check solution unit
-unit_correct = module5.check_unit(formula_unit_dimension,answer_unit)
+solution_unit = formula_unit_dimension
+unit_correct = module5.check_unit(solution_unit,answer_unit)
 #unit_correct = True
+print(f'Solution unit: {formula_unit_dimension}')
+print(f'Answer unit: {answer_unit}')
 if unit_correct:
-    print('Unit correct!')
+    print('Unit answer correct!')
 else:
-    print('Unit incorrect!')
+    print('Unit answer incorrect!')
 # 'correct'
 
 print('\nEnd of system workflow.')

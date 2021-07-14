@@ -1,6 +1,6 @@
 import sympy
 
-def get_lhs_identifier_properties(formula_rearrangement,formula_identifiers):
+def get_lhs_identifier_properties(formula_identifiers):
     """Get left-hand side identifier name and symbol."""
     identifier_name = formula_identifiers[0][1]
     identifier_symbol = formula_identifiers[0][0]
@@ -11,17 +11,17 @@ def get_answer_value_and_unit(answer_input):
     try:
         answer_value_unit = answer_input.split()
         answer_value = answer_value_unit[0]
-        answer_unit = answer_value_unit[1]
+        answer_unit = ' '.join(answer_value_unit[1:])
     except:
         print("Please input value AND unit!")
-        return None,None
+        return answer_input,None
 
     return answer_value,answer_unit
 
-def check_value(identifier_values,answer_value):
+def check_value(solution_value,answer_value):
     """Check if input value corresponds to formula value."""
     answer_value = sympy.Rational(answer_value)
-    value_correct = answer_value == identifier_values[0]
+    value_correct = answer_value == solution_value
 
     #TODO: allow for float tolerance of +- x %
 
