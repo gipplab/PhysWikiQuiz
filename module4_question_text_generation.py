@@ -25,6 +25,6 @@ def get_question_text(formula_identifiers,identifier_values,identifier_unit_dime
         question_text += right_hand_side_identifier[0] + ' ' + right_hand_side_identifier[1] + ' = ' + str(right_hand_side_identifier[2]) + ' ' + right_hand_side_identifier[3] + ', '
 
     # Finalize
-    question_text = question_text[:-2] + ' ?\n'
+    question_text = question_text[:-2] + ' ?'
 
     return question_text

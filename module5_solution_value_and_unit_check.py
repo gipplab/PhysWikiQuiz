@@ -8,14 +8,12 @@ def get_lhs_identifier_properties(formula_identifiers):
 
 def get_answer_value_and_unit(answer_input):
     """Get answer value and unit from parsing user answer input."""
-    try:
-        answer_value_unit = answer_input.split()
-        answer_value = answer_value_unit[0]
-        answer_unit = ' '.join(answer_value_unit[1:])
-    except:
+    answer_value_unit = answer_input.split()
+    answer_value = answer_value_unit[0]
+    answer_unit = ' '.join(answer_value_unit[1:])
+    if len(answer_unit) == 0:
         print("Please input value AND unit!")
-        return answer_input,None
-
+        answer_unit = None
     return answer_value,answer_unit
 
 def check_value(solution_value,answer_value):

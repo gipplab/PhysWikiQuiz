@@ -4,8 +4,6 @@
 # ISSUES:
 #TODO: module3.get_random_identifier_values
     # strToSympy parsing \frac, etc.
-#TODO: module1.convert_unit_dimensions:
-    # convert units from \mathsf{X}^{Y} to SI units
 #TODO: module5.check_value:
     # allow percentage float tolerance for answer value
 
@@ -26,10 +24,10 @@ import module5_solution_value_and_unit_check as module5
 #qid = input('Input formula question QID:')
 # Example
 #qid = 'Q11376'#: 'acceleration'
-#qid = 'Q11652'# 'frequency':
+qid = 'Q11652'# 'frequency':
 #qid = 'Q35875'# 'mass-energy equivalence'
 #qid = 'Q2397319'# 'Newton's second law of motion for constant mass'
-qid = 'Q3711325'# 'speed'
+#qid = 'Q3711325'# 'speed'
 print('\nInput formula question QID: ',qid)
 
 # Get item from QID
@@ -108,7 +106,7 @@ question_text = module4.get_question_text(formula_identifiers,identifier_values,
 # b) 'What is the mass m, given force F = 6 N and acceleration a = 3 m/s^2 ?'
 # c) 'What is the acceleration a, given Force F = 6 N and mass m = 2 kg ?'
 # (randomize)
-print(question_text)
+print(question_text,'\n')
 
 #############
 

@@ -5,6 +5,7 @@
     <title>PhysWikiQuiz</title>
 
     <img src="PhysWikiQuiz-Logo.png" alt="PhysWikiQuiz-Logo"></img>
+    <!-- https://stackoverflow.com/questions/11596777/flask-not-serving-pictures -->
 
     <h1>PhysWikiQuiz</h1>
     <h3>Physics Question Generation and Interrogation System</h3>
@@ -17,8 +18,8 @@
 
     <h5>Formula Concept Question:</h5>
 
-    <form method="POST">
-    <label name="question" value="{{ question }}"></label>
+    <form>
+    <label name="question">{{ question }}</label>
     </form>
 
     <h5>Enter Formula Concept Question Answer:</h5>
@@ -26,6 +27,10 @@
     <form method="POST">
     <input name="answer">
         <button type="submit">Answer</button>
+    </form>
+
+    <form>
+    <label name="correction">{{ correction }}</label>
     </form>
 
 </head>
