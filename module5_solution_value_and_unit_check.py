@@ -18,7 +18,7 @@ def get_answer_value_and_unit(answer_input):
 
 def check_value(solution_value,answer_value):
     """Check if input value corresponds to formula value."""
-    answer_value = sympy.Rational(answer_value)
+    #answer_value = sympy.Rational(answer_value)
     value_correct = answer_value == solution_value
 
     #TODO: allow for float tolerance of +- x %

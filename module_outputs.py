@@ -14,7 +14,7 @@ import module3_identifier_value_generation as module3
 import module4_question_text_generation as module4
 import module5_solution_value_and_unit_check as module5
 
-def get_question(qid):
+def generate_question(qid):
 
     ##############################################
     # Module 0: Formula and Identifier Retrieval #
@@ -78,7 +78,7 @@ def get_question(qid):
 
     return question_text,identifier_values,formula_unit_dimension
 
-def correct_answer(identifier_values,formula_unit_dimension,answer_input):
+def correct_answer(correct_value,correct_unit,answer_input):
 
     # STUDENT INPUT
 
@@ -93,27 +93,22 @@ def correct_answer(identifier_values,formula_unit_dimension,answer_input):
 
     print('Check answer value and unit...\n')
     # check solution value
-    solution_value = identifier_values[0]
-    value_correct = module5.check_value(solution_value,answer_value)
-    #value_correct = True
-    print(f'Solution value: {solution_value}')
+    value_correct = module5.check_value(correct_value,answer_value)
+    print(f'Solution value: {correct_value}')
     print(f'Answer value: {answer_value}')
     if value_correct:
         print('Value answer correct!')
     else:
         print('Value answer incorrect!')
-    # 'correct'
+
     print()
     # check solution unit
-    solution_unit = formula_unit_dimension
-    unit_correct = module5.check_unit(solution_unit,answer_unit)
-    #unit_correct = True
-    print(f'Solution unit: {formula_unit_dimension}')
+    unit_correct = module5.check_unit(correct_unit,answer_unit)
+    print(f'Solution unit: {correct_unit}')
     print(f'Answer unit: {answer_unit}')
     if unit_correct:
         print('Unit answer correct!')
     else:
         print('Unit answer incorrect!')
-    # 'correct'
 
     return value_correct,unit_correct

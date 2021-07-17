@@ -1,5 +1,5 @@
 from flask import Flask, request, render_template
-from module_outputs import get_question,correct_answer
+from module_outputs import generate_question,correct_answer
 import json
 
 #Flask forms tutorial:
@@ -20,43 +20,44 @@ def my_form():
 @app.route('/', methods=['POST'])
 def my_form_post():
 
+    # Init variables
+    qid = ''
+    answer = ''
+    correction = ''
+
     # Read from cache
     with open('cache.json', 'r') as f:
         cache = json.load(f)
-    qid = cache['qid']
     question = cache['question']
-    answer = cache['answer']
-    correction = cache['correction']
 
-    if 'qid' in request.form:
+    if 'qid' in request.form and cache['question_generated']==False:
 
         # QUESTION GENERATION
         try:
             qid = request.form['qid']
-            question_text, identifier_info, formula_info = get_question(qid)
+            question_text, identifier_info, formula_info = generate_question(qid)
+            cache['correct_value'] = str(identifier_info[0])
+            cache['correct_unit'] = formula_info
             question = question_text
+            cache['question_generated'] = True
         except:
-            qid = ''
-            question = ''
+            pass
 
-    if 'answer' in request.form:
+    if 'answer' in request.form and cache['question_generated']==True:
 
         # ANSWER CORRECTION
         try:
             answer = request.form['answer']
-            question_text, identifier_info, formula_info = get_question(qid)
-            value_correct, unit_correct = correct_answer(identifier_info, formula_info, answer)
-            correction = value_correct, unit_correct
+            value_correct, unit_correct = correct_answer(cache['correct_value'],cache['correct_unit'],answer)
+            #correction = value_correct, unit_correct
+            correction = 'Value answer correct: ' + str(value_correct) + ", " + 'Unit answer correct: ' + str(unit_correct)
+            cache['question_generated'] = False
 
         except:
-            answer = ''
-            correction = ''
+            pass
 
     # Write to cache
-    cache['qid'] = qid
     cache['question'] = question
-    cache['answer'] = answer
-    cache['correction'] = correction
     with open('cache.json', 'w') as f:
         json.dump(cache,f)
 

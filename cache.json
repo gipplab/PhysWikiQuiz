@@ -1,1 +1,1 @@
-{"qid": "Q3711325", "question": "What is the speed v, given distance s = 7 m, duration t = 2 s ?", "answer": "7/2 m s^-1", "correction": [false, true]}
+{"question": "What is the speed v, given distance s = 10 m, duration t = 3 s ?", "question_generated": false, "correct_value": "10/3", "correct_unit": "m s^-1"}
