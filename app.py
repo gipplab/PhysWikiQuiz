@@ -28,6 +28,7 @@ def my_form_post():
     # Read from cache
     with open('cache.json', 'r') as f:
         cache = json.load(f)
+    qid = cache['qid']
     question = cache['question']
 
     if 'qid' in request.form and cache['question_generated']==False:
@@ -41,22 +42,37 @@ def my_form_post():
             question = question_text
             cache['question_generated'] = True
         except:
-            pass
+            question = 'Question could not be generated'
 
-    if 'answer' in request.form and cache['question_generated']==True:
+    if 'answer' in request.form:# and cache['question_generated']==True:
 
         # ANSWER CORRECTION
         try:
             answer = request.form['answer']
             value_correct, unit_correct = correct_answer(cache['correct_value'],cache['correct_unit'],answer)
-            #correction = value_correct, unit_correct
-            correction = 'Value answer correct: ' + str(value_correct) + ", " + 'Unit answer correct: ' + str(unit_correct)
+            # Set correction text
+            # correction = value_correct, unit_correct
+            # correction = 'Value answer correct: ' + str(value_correct) + ", " + 'Unit answer correct: ' + str(unit_correct)
+            value_prefix = 'Value '
+            unit_prefix = 'Unit '
+            if value_correct:
+                value_suffix = 'correct!'
+            elif not value_correct:
+                value_suffix = 'incorrect!'
+            if unit_correct:
+                unit_suffix = 'correct!'
+            elif not unit_correct:
+                unit_suffix = 'incorrect!'
+            value_text = value_prefix + value_suffix
+            unit_text = unit_prefix + unit_suffix
+            correction = ' '.join([value_text,unit_text])
             cache['question_generated'] = False
 
         except:
             pass
 
     # Write to cache
+    cache['qid'] = qid
     cache['question'] = question
     with open('cache.json', 'w') as f:
         json.dump(cache,f)

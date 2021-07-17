@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
+
 <head>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+
     <meta charset="UTF-8">
     <title>PhysWikiQuiz</title>
 
-    <img src="PhysWikiQuiz-Logo.png" alt="PhysWikiQuiz-Logo"></img>
+    <style>
+      button {
+        background-color: #5d8aa8;
+        border: none;
+        color: white;
+        padding: 4px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    </style>
+
+</head>
+
+<body>
+
+<img src="PhysWikiQuiz-Logo.png" alt="PhysWikiQuiz-Logo"></img>
     <!-- https://stackoverflow.com/questions/11596777/flask-not-serving-pictures -->
 
-    <h1>PhysWikiQuiz</h1>
-    <h3>Physics Question Generation and Interrogation System</h3>
-    <h5>Enter Formula Concept Wikidata QID</h5>
+    <center>
+
+    <h1 style="background-color:powderblue;">PhysWikiQuiz</h1>
+    <h3 align="center">Physics Question Generation and Interrogation System</h3>
+    <h5>Enter Formula Concept Wikidata QID:</h5>
 
     <form method="POST">
     <input name="qid" value="{{ qid }}">
@@ -28,13 +50,12 @@
     <input name="answer" value="{{ answer }}">
         <button type="submit">Answer</button>
     </form>
-
+    <br>
     <form>
     <label name="correction">{{ correction }}</label>
     </form>
 
-</head>
-<body>
+    </center>
 
 </body>
 </html>
