@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 from module_outputs import get_question,correct_answer
+import json
 
 #Flask forms tutorial:
 #https://web.itu.edu.tr/uyar/fad/forms.html
@@ -19,43 +20,47 @@ def my_form():
 @app.route('/', methods=['POST'])
 def my_form_post():
 
-    # QID QUERY
-    qid = ''
-    try:
-        qid = request.form['qid']
-    except:
-        pass
+    # Read from cache
+    with open('cache.json', 'r') as f:
+        cache = json.load(f)
+    qid = cache['qid']
+    question = cache['question']
+    answer = cache['answer']
+    correction = cache['correction']
 
-    # QUESTION GENERATION
-    question = ''
-    identifier_info = None
-    formula_info = None
-    try:
-        qid = request.form['qid']
-        question_text, identifier_info, formula_info = get_question(qid)
-        question = question_text
-    except:
-        pass
+    if 'qid' in request.form:
 
-    # ANSWER QUERY
-    answer = ''
-    try:
-        answer = request.form['answer']
-    except:
-        pass
-
-    # ANSWER CORRECTION
-    correction = ''
-    if len(answer) != 0:
+        # QUESTION GENERATION
         try:
+            qid = request.form['qid']
+            question_text, identifier_info, formula_info = get_question(qid)
+            question = question_text
+        except:
+            qid = ''
+            question = ''
+
+    if 'answer' in request.form:
+
+        # ANSWER CORRECTION
+        try:
+            answer = request.form['answer']
+            question_text, identifier_info, formula_info = get_question(qid)
             value_correct, unit_correct = correct_answer(identifier_info, formula_info, answer)
             correction = value_correct, unit_correct
-        except:
-            pass
 
-    return render_template('my-form.html',qid=qid,question=question,
-                           identifier_info=identifier_info,formula_info=formula_info,
-                           answer=answer,correction=correction)
+        except:
+            answer = ''
+            correction = ''
+
+    # Write to cache
+    cache['qid'] = qid
+    cache['question'] = question
+    cache['answer'] = answer
+    cache['correction'] = correction
+    with open('cache.json', 'w') as f:
+        json.dump(cache,f)
+
+    return render_template('my-form.html',qid=qid,question=question,answer=answer,correction=correction)
 
 if __name__ == '__main__':
     app.run(debug=True)
