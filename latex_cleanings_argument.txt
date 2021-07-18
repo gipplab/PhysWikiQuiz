@@ -1,0 +1,9 @@
+\boldsymbol{x}
+\mathrm{x}
+\mathbf{x}
+\mathsymbol{x}
+\vec{x}
+\hat{x}
+\text{x}
+\mathcal{x}
+\mathit{x}

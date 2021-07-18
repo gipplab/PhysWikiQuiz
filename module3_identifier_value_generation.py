@@ -24,6 +24,7 @@ def get_random_identifier_values(formula_identifiers,defining_formula):
     identifiers_sympy = sympy.symbols(' '.join([identifier[0] for identifier in formula_identifiers]))
     #identifiers_sympy = sympy.symbols('a v t')
 
+    # convert LaTeX to Sympy format
     # formula_sympy = latex2sympy.strToSympy(defining_formula)
     formula_sympy = latex2sympy(defining_formula)
 
