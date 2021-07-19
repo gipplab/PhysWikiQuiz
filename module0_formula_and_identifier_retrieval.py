@@ -4,7 +4,7 @@ import requests
 
 # load cleanings
 cleanings_simple = []
-with open('latex_cleanings_simple.txt') as f:
+with open('latex_cleanings_simple.csv') as f:
     for row in csv.reader(f):
         cleanings_simple.append((row[0],row[1]))
 with open('latex_cleanings_argument.txt') as f:
@@ -12,6 +12,7 @@ with open('latex_cleanings_argument.txt') as f:
 
 def clean_latex(latex_string):
     """Clean LaTeX formula for converter."""
+
     # simple cleanings
     for cleaning in cleanings_simple:
         latex_string = latex_string.replace(cleaning[0],cleaning[1])

@@ -7,6 +7,10 @@
 #TODO: module5.check_value:
     # allow percentage float tolerance for answer value
 
+#TODO: enable concept name input, e.g., 'speed' or 'acceleration' instead of QID
+
+#TODO: extend cleanings (integral, greek letters \, variable interchange, x(t) -> x_t)
+
 import module0_formula_and_identifier_retrieval as module0
 import module1_identifier_unit_retrieval as module1
 import module2_formula_rearrangement as module2
