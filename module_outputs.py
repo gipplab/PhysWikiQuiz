@@ -14,7 +14,7 @@ import module3_identifier_value_generation as module3
 import module4_question_text_generation as module4
 import module5_solution_value_and_unit_check as module5
 
-def generate_question(qid):
+def generate_question(name):
 
     ##############################################
     # Module 0: Formula and Identifier Retrieval #
@@ -22,12 +22,18 @@ def generate_question(qid):
 
     # INSTRUCTOR INPUT
 
-    # Module 0.0: Input formula question QID
-    print('\nInput formula question QID: ',qid)
+    # Module 0.0: Input Formula Concept name
+    print('\nInput Formula Concept name: ',name)
+
+    # Get QID from name
+    print('\nRetrieving Wikidata item qid...\n')
+    qid = module0.get_qid_sparql(name)
 
     # Get item from QID
     print('\nRetrieving Wikidata item...\n')
     item = module0.get_Wikidata_item(qid)
+
+    #TODO: check here whether item has 'defining formula' and take next in qid list (returned by get_qid) if not
 
     # Module 0.1: Get concept name from item
     concept_name = module0.get_concept_name(item)

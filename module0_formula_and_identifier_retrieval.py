@@ -1,6 +1,8 @@
 import csv
 import string
 import requests
+import pywikibot
+import SPARQLWrapper
 
 # load cleanings
 cleanings_simple = []
@@ -25,6 +27,61 @@ def clean_latex(latex_string):
             latex_string = latex_string.replace(clean, letter)
 
     return latex_string
+
+# get Wikidata qid from name using pywikibot
+def get_qid_pywikibot(name):
+    try:
+        site = pywikibot.Site("en", "wikipedia")
+        page = pywikibot.Page(site, name)
+        item = pywikibot.ItemPage.fromPage(page)
+        qid = item.id
+    except:
+        qid = 'N/A'
+    return qid
+
+def get_sparql_results(sparql_query_string):
+    sparql = SPARQLWrapper.SPARQLWrapper("https://query.wikidata.org/sparql")
+    sparql.setQuery(sparql_query_string)
+    try:
+        # stream with the results in XML, see <http://www.w3.org/TR/rdf-sparql-XMLres/>
+        sparql.setReturnFormat(SPARQLWrapper.JSON)
+        result = sparql.query().convert()
+    except:
+        result = None
+    return result
+
+def get_qid_sparql(name):
+
+    sparql_query_string = """SELECT distinct ?item ?itemLabel ?itemDescription WHERE{  
+        ?item ?label "%s"@en. 
+        ?article schema:about ?item .
+        ?article schema:inLanguage "en" .
+        ?article schema:isPartOf <https://en.wikipedia.org/>. 
+        SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }    
+        }""" % name
+
+    sparql_results = get_sparql_results(sparql_query_string)
+
+    qid_results = []
+    try:
+        for result in sparql_results['results']['bindings']:
+            try:
+                desc = result['itemDescription']['value']
+                if desc != 'Wikimedia disambiguation page':
+                    url = result['item']['value']
+                    qid = url.split("/")[-1]
+                    qid_results.append(qid)
+            except:
+                pass
+    except:
+        pass
+
+    if len(qid_results) > 0:
+        qid = qid_results[0]  # take first result
+    else:
+        qid = 'N/A'
+
+    return qid
 
 def get_Wikidata_item(Wikidata_qid):
     """Get Wikidata item from qid using https request."""

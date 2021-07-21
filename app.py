@@ -21,22 +21,22 @@ def my_form():
 def my_form_post():
 
     # Init variables
-    qid = ''
+    concept = ''
     answer = ''
     correction = ''
 
     # Read from cache
     with open('cache.json', 'r') as f:
         cache = json.load(f)
-    qid = cache['qid']
+    concept = cache['concept']
     question = cache['question']
 
-    if 'qid' in request.form and cache['question_generated']==False:
+    if 'concept' in request.form and cache['question_generated']==False:
 
         # QUESTION GENERATION
         try:
-            qid = request.form['qid']
-            question_text, identifier_info, formula_info = generate_question(qid)
+            concept = request.form['concept']
+            question_text, identifier_info, formula_info = generate_question(concept)
             cache['correct_value'] = str(identifier_info[0])
             cache['correct_unit'] = formula_info
             question = question_text
@@ -72,12 +72,12 @@ def my_form_post():
             pass
 
     # Write to cache
-    cache['qid'] = qid
+    cache['concept'] = concept
     cache['question'] = question
     with open('cache.json', 'w') as f:
         json.dump(cache,f)
 
-    return render_template('my-form.html',qid=qid,question=question,answer=answer,correction=correction)
+    return render_template('my-form.html',concept=concept,question=question,answer=answer,correction=correction)
 
 if __name__ == '__main__':
     app.run(debug=True)
