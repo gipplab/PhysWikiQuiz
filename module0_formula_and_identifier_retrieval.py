@@ -15,16 +15,16 @@ with open('latex_cleanings_argument.txt') as f:
 def clean_latex(latex_string):
     """Clean LaTeX formula for converter."""
 
-    # simple cleanings
-    for cleaning in cleanings_simple:
-        latex_string = latex_string.replace(cleaning[0],cleaning[1])
-
     # argument cleanings
     alphabet = list(string.ascii_lowercase) + list(string.ascii_uppercase)
     for cleaning in cleanings_argument:
         for letter in alphabet:
             clean = cleaning.strip('\n').replace('x', letter)
             latex_string = latex_string.replace(clean, letter)
+
+    # simple cleanings
+    for cleaning in cleanings_simple:
+        latex_string = latex_string.replace(cleaning[0],cleaning[1])
 
     return latex_string
 
@@ -50,16 +50,21 @@ def get_sparql_results(sparql_query_string):
         result = None
     return result
 
-def get_qid_sparql(name):
+def get_sparql_query_string(name):
 
     sparql_query_string = """SELECT distinct ?item ?itemLabel ?itemDescription WHERE{  
-        ?item ?label "%s"@en. 
-        ?article schema:about ?item .
-        ?article schema:inLanguage "en" .
-        ?article schema:isPartOf <https://en.wikipedia.org/>. 
-        SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }    
-        }""" % name
+            ?item ?label "%s"@en. 
+            ?article schema:about ?item .
+            ?article schema:inLanguage "en" .
+            ?article schema:isPartOf <https://en.wikipedia.org/>. 
+            SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }    
+            }""" % name
 
+    return sparql_query_string
+
+def get_qid_sparql(name):
+
+    sparql_query_string = get_sparql_query_string(name)
     sparql_results = get_sparql_results(sparql_query_string)
 
     qid_results = []
@@ -70,6 +75,36 @@ def get_qid_sparql(name):
                 if desc != 'Wikimedia disambiguation page':
                     url = result['item']['value']
                     qid = url.split("/")[-1]
+                    qid_results.append(qid)
+            except:
+                pass
+    except:
+        pass
+
+    if len(qid_results) > 0:
+        qid = qid_results[0]  # take first result
+    else:
+        qid = 'N/A'
+
+    return qid
+
+def get_qid_sparql_with_defining_formula(name):
+
+    sparql_query_string = get_sparql_query_string(name)
+    sparql_results = get_sparql_results(sparql_query_string)
+
+    qid_results = []
+    try:
+        for result in sparql_results['results']['bindings']:
+            try:
+                url = result['item']['value']
+                qid = url.split("/")[-1]
+                item = get_Wikidata_item(qid)
+                try:
+                    defining_formula = item['claims']['P2534']
+                except:
+                    defining_formula = 'N/A'
+                if defining_formula != 'N/A':
                     qid_results.append(qid)
             except:
                 pass

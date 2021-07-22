@@ -31,7 +31,7 @@ def my_form_post():
     concept = cache['concept']
     question = cache['question']
 
-    if 'concept' in request.form and cache['question_generated']==False:
+    if 'concept' in request.form:# and cache['question_generated']==False:
 
         # QUESTION GENERATION
         try:
