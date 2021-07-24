@@ -28,6 +28,7 @@ def generate_question(name):
     # Get QID from name
     print('\nRetrieving Wikidata item qid...\n')
     qid = module0.get_qid_sparql_with_defining_formula(name)
+    print(f'Retrieving formula concept for qid >>{qid}<<...\n')
 
     # Get item from QID
     print('\nRetrieving Wikidata item...\n')
