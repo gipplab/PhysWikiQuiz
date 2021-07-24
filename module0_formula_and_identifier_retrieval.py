@@ -166,7 +166,7 @@ def get_formula_identifiers(Wikidata_item):
     identifier_property_tuples.append((identifier_symbol, identifier_name))
 
     # Retrieve right-hand side identifiers
-    for property in ['P527','P4934']: # 'has part', 'calculated from'
+    for property in ['P527','P4934','P9758']: # 'has part', 'calculated from', 'symbol represents'
         try:
             properties_object = Wikidata_item['claims'][property]
         except:
