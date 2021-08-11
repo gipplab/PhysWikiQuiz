@@ -7,7 +7,6 @@ import sympy
 def get_random_identifier_values(formula_identifiers,defining_formula):
     """Generate random identifier integer values."""
 
-    lhs_identifier_value = []
     rhs_identifier_values = []
 
     # define limit for right-hand side integer value
@@ -21,7 +20,7 @@ def get_random_identifier_values(formula_identifiers,defining_formula):
     # generate resulting value for left-hand side identifier
     #defining_formula = 'x = y'
     # TODO: generalize
-    identifiers_sympy = sympy.symbols(' '.join([identifier[0] for identifier in formula_identifiers]))
+    identifiers_sympy = sympy.symbols(' '.join([identifier[1] for identifier in formula_identifiers]))
     #identifiers_sympy = sympy.symbols('a v t')
 
     # convert LaTeX to Sympy format
@@ -39,7 +38,7 @@ def get_random_identifier_values(formula_identifiers,defining_formula):
     except:
         lhs_identifier_value = formula_sympy
 
-    identifier_values = [lhs_identifier_value]
+    identifier_values = [str(lhs_identifier_value)]
     identifier_values.extend(rhs_identifier_values)
 
     return identifier_values

@@ -1,5 +1,4 @@
-from module0_formula_and_identifier_retrieval import get_Wikidata_item
-import re
+from old.module0_formula_and_identifier_retrieval import get_Wikidata_item
 
 unit_property_key = 'P4020'
 

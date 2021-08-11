@@ -7,8 +7,7 @@
 #TODO: module5.check_value:
     # allow percentage float tolerance for answer value
 
-import module1_formula_and_identifier_retrieval as module1
-import module2_formula_rearrangement as module2
+from old import module0_formula_and_identifier_retrieval as module0, module1_identifier_unit_retrieval as module1
 import module3_identifier_value_generation as module3
 import module4_question_text_generation as module4
 import module5_solution_value_and_unit_check as module5
@@ -16,40 +15,46 @@ import module5_solution_value_and_unit_check as module5
 def generate_question(name):
 
     ##############################################
-    # Module 1: Formula and Identifier Retrieval #
+    # Module 0: Formula and Identifier Retrieval #
     ##############################################
 
     # INSTRUCTOR INPUT
 
-    # Input Formula Concept name
+    # Module 0.0: Input Formula Concept name
     print('\nInput Formula Concept name: ',name)
 
     # Get QID from name
     print('\nRetrieving Wikidata item qid...\n')
-    qid = module1.get_qid_sparql_with_defining_formula(name)
+    qid = module0.get_qid_sparql_with_defining_formula(name)
     print(f'Retrieving formula concept for qid >>{qid}<<...\n')
 
     # Get item from QID
     print('\nRetrieving Wikidata item...\n')
-    item = module1.get_Wikidata_item(qid)
+    item = module0.get_Wikidata_item(qid)
 
-    # Get concept name from item
-    concept_name = module1.get_concept_name(item)
+    # Module 0.1: Get concept name from item
+    concept_name = module0.get_concept_name(item)
     print(f'Retrieving formula concept name: >>{concept_name}<<\n')
 
     # System output for processing question
     print(f'Generating physics formula question for >>{concept_name}<<...\n')
 
-    # Get defining formula
-    defining_formula = module1.get_defining_formula(item)
+    # Module 0.2: Get defining formula
+    defining_formula = module0.get_defining_formula(item)
     print(f'Retrieving defining formula: >>{defining_formula}<<\n')
 
-    # Get formula unit dimension
-    formula_unit_dimension = module1.get_formula_unit_dimension(item)
+    # Module 0.3: Get formula identifier (symbol, name) tuples
+    print('Retrieving formula identifier symbols and names...\n')
+    formula_identifiers = module0.get_formula_identifiers(item)
 
-    # Get formula identifier property (name, symbol, unit) triples
-    print('Retrieving formula identifier properties...\n')
-    formula_identifiers = module1.get_identifier_properties(item)
+    #######################################
+    # Module 1: Identifier Unit Retrieval #
+    #######################################
+
+    print('Retrieving formula identifier units...\n')
+    formula_unit_dimension = module1.get_formula_unit_dimension(item)
+    identifier_unit_dimensions = module1.get_identifier_unit_dimensions(item)
+    formula_identifiers = module1.update_identifiers_dict(formula_identifiers,formula_unit_dimension,identifier_unit_dimensions)
 
     ###################################
     # Module 2: Formula Rearrangement #
@@ -71,7 +76,7 @@ def generate_question(name):
     ######################################
 
     print('Generating formula question text...\n')
-    question_text = module4.get_question_text(formula_identifiers,identifier_values)
+    question_text = module4.get_question_text(formula_identifiers,identifier_values,identifier_unit_dimensions)
     print(question_text)
 
     return question_text,identifier_values,formula_unit_dimension

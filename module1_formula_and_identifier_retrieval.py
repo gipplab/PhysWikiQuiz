@@ -145,49 +145,97 @@ def get_defining_formula(Wikidata_item):
 
     return defining_formula_string
 
-def get_formula_identifiers(Wikidata_item):
-    """Retrieve formula identifiers from Wikidata item."""
+def convert_unit_dimensions(ISQ_dimensions):
+    """Convert unit from ISQ dimensions to SI units."""
 
-    # Populate identifier tuples list
-    identifier_property_tuples = []
+    unit_dimensions = ISQ_dimensions
+    # Translate into SI standard form
+    # mathsf_content = re.search(r'mathsf{(.*?)}', identifier_unit_dimension)
+    for expression in ['\mathsf', '{', '}']:
+        unit_dimensions = unit_dimensions.replace(expression, '')
 
-    # Retrieve left-hand side identifier
-    left_hand_side_symbol_property_key = 'P7235' # 'in defining formula'
-    identifier_name = Wikidata_item['labels']['en']['value']
-    try:
-        identifier_symbol = Wikidata_item['claims'][left_hand_side_symbol_property_key][0]['mainsnak']['datavalue']['value']
-    except:
-        identifier_symbol = None
-
-    # clean LaTeX
-    identifier_symbol = clean_latex(identifier_symbol)
-
-    # Add left-hand side identifier to list
-    identifier_property_tuples.append((identifier_symbol, identifier_name))
-
-    # Retrieve right-hand side identifiers
-    for property in ['P527','P4934','P9758']: # 'has part', 'calculated from', 'symbol represents'
+    # Map Symbol for dimension to SI unit symbol
+    # See https://en.wikipedia.org/wiki/International_System_of_Quantities
+    mapping = {'L': 'm', 'M': 'kg', 'T': 's', 'I': 'A', '\Theta': 'K', 'N': 'mol', 'J': 'cd'}
+    for k,v in mapping.items():
         try:
-            properties_object = Wikidata_item['claims'][property]
+            unit_dimensions = unit_dimensions.replace(k,v)
         except:
             pass
-    for identifier_propery in properties_object:
+    SI_dimensions = unit_dimensions
 
-        # get identifier symbol
-        for property in ['P7235','P416']:
-            try:
-                identifier_symbol = identifier_propery['qualifiers'][property][0]['datavalue']['value']
-            except:
-                pass
+    return SI_dimensions
 
-        # get identifier name
-        identifier_item_qid = identifier_propery['mainsnak']['datavalue']['value']['id']
-        identifier_item = get_Wikidata_item(identifier_item_qid)
-        identifier_name = identifier_item['labels']['en']['value']
+def get_formula_unit_dimension(Wikidata_item):
+    """Get ISQ unit dimensions of formula."""
 
-        # clean LaTeX
-        identifier_symbol = clean_latex(identifier_symbol)
+    formula_unit_dimensions = Wikidata_item['claims']['P4020'][0]['mainsnak']['datavalue']['value'] # 'ISQ dimension'
+    # Convert from ISQ to SI
+    formula_unit_dimensions = convert_unit_dimensions(formula_unit_dimensions)
 
-        identifier_property_tuples.append((identifier_symbol,identifier_name))
+    return formula_unit_dimensions
 
-    return identifier_property_tuples
+def get_identifier_properties(Wikidata_item):
+
+    # Populate identifier properties list of (name, symbol, unit) triples
+    identifier_properties = []
+
+    # Get identifier property claims
+    property_claims = {}
+    for identifier_property_key in ['P527', 'P4934', 'P7235']:  # 'has part', 'calculated from', 'in defining formula'
+        try:
+            property_claim = Wikidata_item['claims'][identifier_property_key]
+            property_claims[identifier_property_key] = property_claim
+        except:
+            pass
+
+    # Exploit identifier property claims
+    for property_claim in property_claims.items():
+
+        P = property_claim[0]
+        for identifier in property_claim[1]:
+
+            # Identifier QID
+            identifier_qid = ''
+            if P == 'P7235': # 'in defining formula'
+                property = 'P9758' # 'symbol represents'
+                try:
+                    identifier_qid = identifier['qualifiers'][property][0]['datavalue']['value']['id']
+                except:
+                    pass
+            elif P in ['P527', 'P4934']:  # 'has part', 'calculated from'
+                try:
+                    identifier_qid = identifier['mainsnak']['datavalue']['value']['id']
+                except:
+                    pass
+            if identifier_qid == '':
+                identifier_qid = Wikidata_item['id']
+
+            # Identifier item
+            identifier_item = get_Wikidata_item(identifier_qid)
+
+            # Identifier name
+            identifier_name = get_concept_name(identifier_item)
+
+            # Identifier symbol
+            if P == 'P7235': # 'in defining formula'
+                identifier_symbol = identifier['mainsnak']['datavalue']['value']
+            elif P in ['P527', 'P4934']:  # 'has part', 'calculated from'
+                for property in ['P416', '7973', '2534', 'P7235']:
+                # 'quantity symbol (string)', 'quantity symbol (LaTeX)', 'defining formula', 'in defining formula'
+                    try:
+                        identifier_symbol = identifier['qualifiers'][property][0]['datavalue']['value']
+                    except:
+                        pass
+            # Clean LaTeX
+            identifier_symbol = clean_latex(identifier_symbol)
+
+            # Identifier unit
+            identifier_unit_property = identifier_item['claims']['P4020'] # 'ISQ dimension'
+            identifier_unit_dimension = identifier_unit_property[0]['mainsnak']['datavalue']['value']
+            # Convert from ISQ to SI
+            identifier_unit = convert_unit_dimensions(identifier_unit_dimension)
+
+            identifier_properties.append((identifier_name,identifier_symbol,identifier_unit))
+
+    return identifier_properties

@@ -1,11 +1,6 @@
 import unittest
 
-import module0_formula_and_identifier_retrieval
-import module1_identifier_unit_retrieval
-import module2_formula_rearrangement
-import module3_identifier_value_generation
-import module4_question_text_generation
-import module5_solution_value_and_unit_check
+from old import module0_formula_and_identifier_retrieval
 
 import pandas as pd
 
@@ -29,7 +24,7 @@ class TestModules(unittest.TestCase):
         #sample_QIDs = [qid]
         sample_QIDs = get_sample_QIDs()
         for qid in sample_QIDs:
-            Wikidata_item = module0_formula_and_identifier_retrieval\
+            Wikidata_item = module0_formula_and_identifier_retrieval \
                 .get_Wikidata_item(qid)
 
             self.assertIsNotNone(Wikidata_item)
