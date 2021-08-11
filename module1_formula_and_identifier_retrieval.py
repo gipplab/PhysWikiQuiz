@@ -170,6 +170,7 @@ def get_formula_unit_dimension(Wikidata_item):
     """Get ISQ unit dimensions of formula."""
 
     formula_unit_dimensions = Wikidata_item['claims']['P4020'][0]['mainsnak']['datavalue']['value'] # 'ISQ dimension'
+    print('Formula_unit_available: ',formula_unit_dimensions)
     # Convert from ISQ to SI
     formula_unit_dimensions = convert_unit_dimensions(formula_unit_dimensions)
 
@@ -193,6 +194,7 @@ def get_identifier_properties(Wikidata_item):
     for property_claim in property_claims.items():
 
         P = property_claim[0]
+        print('Identifier properties in: ',P)
         for identifier in property_claim[1]:
 
             # Identifier QID
@@ -236,6 +238,7 @@ def get_identifier_properties(Wikidata_item):
             # Convert from ISQ to SI
             identifier_unit = convert_unit_dimensions(identifier_unit_dimension)
 
+            print('Identifier property: ',(identifier_name,identifier_symbol,identifier_unit))
             identifier_properties.append((identifier_name,identifier_symbol,identifier_unit))
 
     return identifier_properties
