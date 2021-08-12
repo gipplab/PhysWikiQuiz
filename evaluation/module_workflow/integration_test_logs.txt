@@ -12,6 +12,7 @@ Identifier property:  ('duration', 't', 's')
 [('acceleration', 'a', 'm s^-2'), ('velocity', 'v', 'm s^-1'), ('duration', 't', 's')]
 (a, v, t)
 Subs(Derivative(1, t), t, 5)
+
 Q186300
 angular acceleration
 \boldsymbol{\alpha} = \frac{d \boldsymbol{\omega}}{d t}
@@ -24,6 +25,7 @@ Identifier property:  ('angular velocity', '\\boldsymbol{\\omega}', 's^-1')
 Identifier property:  ('duration', 't', 's')
 [('angular acceleration', '\\boldsymbol{\\alpha}', 's^-2'), ('angular velocity', '\\boldsymbol{\\omega}', 's^-1'), ('duration', 't', 's')]
 (\boldsymbol{\alpha}, \boldsymbol{\omega}, t)
+
 Q834020
 angular frequency
 \omega = 2 \pi f
@@ -37,6 +39,7 @@ Identifier property:  ('frequency', 'f', 's^-1')
 [('angular frequency', '\\omega', 's^-1'), ('frequency', 'f', 's^-1')]
 (\omega, f)
 6*pi
+
 Q161254
 angular momentum
 L = R* p
@@ -51,6 +54,7 @@ Identifier property:  ('momentum', 'p', 'm kg s^-1')
 [('angular momentum', 'L', 'm^2 kg s^-1'), ('position vector', 'r', 'm'), ('momentum', 'p', 'm kg s^-1')]
 (L, r, p)
 3*R
+
 Q161635
 angular velocity
 \boldsymbol{\omega} = \frac{d \varphi}{d t} u
@@ -61,6 +65,7 @@ Identifier properties in:  P7235
 Identifier property:  ('angular velocity', '\\boldsymbol{\\omega}', 's^-1')
 Identifier property:  ('angular displacement', '\\varphi', '1')
 Identifier property:  ('duration', 't', 's')
+
 Q2945123
 center of mass
 \sum_{i=1}^n m_i(r_i - R) = 0

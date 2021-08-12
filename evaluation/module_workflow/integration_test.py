@@ -8,7 +8,7 @@ from latex2sympy2 import latex2sympy
 
 import module1_formula_and_identifier_retrieval as module1
 
-filename = 'unit_test_module_workflow_automatic.csv'
+filename = 'unit_test_module_workflow_automatic_empty.csv'
 
 def write_cell(col_name,row_idx,content):
     table.loc[table.index[row_idx],col_name] = str(content)

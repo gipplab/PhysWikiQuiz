@@ -1,8 +1,24 @@
 import itertools
 import random
+import requests
+import urllib
 #import latex2sympy
 from latex2sympy2 import latex2sympy
 import sympy
+
+def get_sympy_from_latex_using_swagger_ui(formula_latex):
+
+    #example:
+    # https://vmext-demo.formulasearchengine.com/math/translation?cas=SymPy&genericExperimentalFeatures=true&latex=%5Cint_a%5Eb%20x%20dx
+    # urllib.parse.quote(formula_latex)
+    url = "https://vmext-demo.formulasearchengine.com/math/translation"
+    params = {'cas': 'SymPy', 'genericExperimentalFeatures': 'true', 'latex': formula_latex}
+
+    response = requests.post(url,params=params)
+    formula_string = response.json()['result']
+    formula_sympy = sympy.sympify(formula_string.split("==")[1])
+
+    return formula_sympy
 
 def get_random_identifier_values(formula_identifiers,defining_formula):
     """Generate random identifier integer values."""
@@ -27,6 +43,7 @@ def get_random_identifier_values(formula_identifiers,defining_formula):
     # convert LaTeX to Sympy format
     # formula_sympy = latex2sympy.strToSympy(defining_formula)
     formula_sympy = latex2sympy(defining_formula)
+    #formula_sympy = get_sympy_from_latex_using_swagger_ui(defining_formula)
     print('Formula sympy: ',formula_sympy)
 
     # substitute generated random values to calculate left-hand side
