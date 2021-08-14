@@ -7,8 +7,9 @@ import sympy
 from latex2sympy2 import latex2sympy
 
 import module1_formula_and_identifier_retrieval as module1
+import module3_identifier_value_generation as module3
 
-filename = 'unit_test_module_workflow_automatic_empty.csv'
+filename = 'unit_test_module_workflow_empty.csv'
 
 def write_cell(col_name,row_idx,content):
     table.loc[table.index[row_idx],col_name] = str(content)
@@ -68,7 +69,8 @@ for idx in range(len(qids)):
     write_cell('Formula unit', idx, formula_unit)
 
     try:
-        formula_sympy = latex2sympy(formula)
+        #formula_sympy = latex2sympy(formula)
+        formula_sympy = module3.get_sympy_from_latex_using_vmext_api(formula)
         print(formula_sympy)
     except:
         formula_sympy = 'N/A'
@@ -119,6 +121,6 @@ for idx in range(len(qids)):
         sympy_rhs = 'N/A'
     write_cell('Sympy rhs',idx,sympy_rhs)
 
-table.to_csv('unit_test_module_workflow_automatic.csv')
+table.to_csv('unit_test_module_workflow_vmext.csv')
 
 print('end')

@@ -6,7 +6,10 @@ import urllib
 from latex2sympy2 import latex2sympy
 import sympy
 
-def get_sympy_from_latex_using_swagger_ui(formula_latex):
+def get_sympy_from_latex_using_vmext_api(formula_latex):
+
+    #Swagger UI
+    # https://vmext-demo.formulasearchengine.com/swagger-ui.html
 
     #example:
     # https://vmext-demo.formulasearchengine.com/math/translation?cas=SymPy&genericExperimentalFeatures=true&latex=%5Cint_a%5Eb%20x%20dx
@@ -42,8 +45,8 @@ def get_random_identifier_values(formula_identifiers,defining_formula):
 
     # convert LaTeX to Sympy format
     # formula_sympy = latex2sympy.strToSympy(defining_formula)
-    formula_sympy = latex2sympy(defining_formula)
-    #formula_sympy = get_sympy_from_latex_using_swagger_ui(defining_formula)
+    #formula_sympy = latex2sympy(defining_formula)
+    formula_sympy = get_sympy_from_latex_using_vmext_api(defining_formula)
     print('Formula sympy: ',formula_sympy)
 
     # substitute generated random values to calculate left-hand side
