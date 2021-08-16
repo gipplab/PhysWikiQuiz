@@ -1,0 +1,67 @@
+;GoldID;QID;Name;Working;Formula;Identifiers;Properties;Formula unit;Identifier units;Formula sympy;Identifiers sympy;Sympy rhs;Numeric
+0;310;Q11376;acceleration;;a = \frac{d v}{d t};[('acceleration', 'a', 'm s^-2'), ('velocity', 'v', 'm s^-1'), ('duration', 't', 's')];P7235;m s^-2;;Derivative(v, t);(a, v, t);Subs(Derivative(1, t), t, 5);-
+1;311;Q186300;angular acceleration;;\boldsymbol{\alpha} = \frac{d \boldsymbol{\omega}}{d t};[('angular acceleration', '\\boldsymbol{\\alpha}', 's^-2'), ('angular velocity', '\\boldsymbol{\\omega}', 's^-1'), ('duration', 't', 's')];P7235;s^-2;;N/A;(\boldsymbol{\alpha}, \boldsymbol{\omega}, t);N/A;-
+2;312;Q834020;angular frequency;yes;\omega = 2 \pi f;[('angular frequency', '\\omega', 's^-1'), ('frequency', 'f', 's^-1')];P7235;s^-1;;2*pi*f;(\omega, f);6*pi;x
+3;313;Q161254;angular momentum;;L = R* p;[('angular momentum', 'L', 'm^2 kg s^-1'), ('position vector', 'r', 'm'), ('momentum', 'p', 'm kg s^-1')];P7235;m^2 kg s^-1;;R*p;(L, r, p);3*R;-
+4;314;Q161635;angular velocity;;\boldsymbol{\omega} = \frac{d \varphi}{d t} u;N/A;P7235;s^-1;;N/A;N/A;N/A;-
+5;315;Q2945123;center of mass;;\sum_{i=1}^n m_i(r_i - R) = 0;N/A;P4934, P7235;N/A;;N/A;N/A;N/A;-
+6;316;Q2248131;centripetal acceleration;;a_C= \fraC{v^2} {r};[('velocity', 'v', 'm s^-1'), ('radius', 'r', 'm'), ('centripetal acceleration', 'a_c', 'm s^-2')];P4934, P7235;m s^-2;;N/A;(v, r, a_c);N/A;-
+7;317;Q172881;centripetal force;;F = - \frac{mv^2 r}{r};[('force', 'F', 'm kg s^-2'), ('mass', 'm', 'kg'), ('velocity', 'v', 'm s^-1'), ('radius', 'r', 'm')];P527;m kg s^-2;;N/A;(F, m, v, r);N/A;-
+8;318;Q843905;circumference;;C=\pi*{d}=2\pi*{r};[('diameter', 'd', 'm'), ('circumference', 'C', 'm'), ('radius', 'r', 'm')];P4934;m;;N/A;(d, C, r);N/A;-
+9;319;Q11382;conservation of energy;;E_{tot,1} = E_{tot,2};[('energy', 'E', 'm^2 kg s^-2')];P527;N/A;;N/A;E;N/A;-
+10;320;Q2305665;conservation of momentum;;p_{tot,1} = p_{tot,2};[];;N/A;;p_{tot,2};N/A;N/A;-
+11;321;Q1127660;damping;;\zeta = \frac{c}{2\sqrt{mk}};N/A;P527;N/A;;N/A;N/A;N/A;-
+12;322;Q272621;Dirac equation;;i\hbar\frac{d \Psi}{d t} = (c\hat \boldsymbol \alpha * \hat \boldsymbol p + mc^2\hat \beta)\Psi;N/A;P527;N/A;;N/A;N/A;N/A;-
+13;323;Q16853908;Dirac equation in curved spacetime;;i\gamma^a e_a^\mu D_\mu \Psi - m \Psi = 0;N/A;P527;N/A;;E*gamma**a*i;N/A;E*gamma**a*i;-
+14;324;Q891408;elastic energy;;U = \frac{1}{2}k \Delta x^2;[('spring constant', 'k', 'kg s^-2'), ('linear strain', '\\Delta x', '1'), ('elastic energy', 'U', 'm^2 kg s^-2')];P4934, P7235;m^2 kg s^-2;;1*1/2*k*Delta*x**2;(k, \Delta, x, U);N/A;-
+15;325;Q849919;electromagnetic force;;F = q(e+ v * B);N/A;P527;N/A;;q*(B*v + E);N/A;q*(B*v + E);-
+16;326;Q103438301;electrostatic force;;F_e = \frac{q_1 q_2}{4 \pi \epsilon_{0} r^2} r;[('force', 'F', 'm kg s^-2'), ('electric charge', 'q', 's A'), ('distance', 'r', 'm'), ('vacuum permittivity', 'r', 'm^-3 kg^-1 s^4 A^2')];P527;N/A;;N/A;(F, q, r, r);N/A;-
+17;327;Q103439852;energy-momentum relation;;E^2 = p^2c^2 + m^2c^4;[('energy', 'E', 'm^2 kg s^-2'), ('momentum', 'p', 'm kg s^-1'), ('mass', 'm', 'kg'), ('speed of light', 'c', 'm s^-1')];P527;N/A;;N/A;(E, p, m, c);N/A;-
+18;328;Q166530;escape velocity;;v_{\text{e}} = \sqrt{\frac{2GM}{r}} = \sqrt{2gr};N/A;P4934;m s^-1;;N/A;N/A;N/A;-
+19;329;Q875744;Euler–Lagrange equation;;\frac{d}{d t}\left(\frac{d L}{d \dot{q}_{j}}\right)=\frac{d L}{d q_{j}};N/A;P527;N/A;;N/A;N/A;N/A;-
+20;330;Q11402;force;;F = \frac{d p}{d t};[('momentum', 'p', 'm kg s^-1'), ('duration', 't', 's'), ('mass', 'm', 'kg'), ('acceleration', 'a', 'm s^-2'), ('force', 'F', 'm kg s^-2')];P4934, P7235;m kg s^-2;;Derivative(p, t);(p, t, m, a, F);Subs(Derivative(p, t), t, 2);-
+21;331;Q1068463;four-momentum;;p^\mu=\begin{matrix}p_0 \\ p_1 \\ p_2 \\ p_3 \end{matrix} = \begin{matrix}E/C\\ p_x \\ p_y \\ p_z \end{matrix} = \begin{matrix}E/C\\ \veCp \end{matrix};[('momentum', 'p', 'm kg s^-1'), ('energy', 'E', 'm^2 kg s^-2'), ('speed of light', 'c', 'm s^-1')];P527;N/A;;N/A;(p, E, c);N/A;-
+22;332;Q1322540;four-velocity;;U \equiv \frac{d R}{d \tau};N/A;P527;N/A;;Eq(U, Derivative(R, tau));N/A;Derivative(R, tau);-
+23;333;Q140028;free fall;;v(t)=-gt+v_{0};N/A;P527;N/A;;#NAME?;N/A;#NAME?;-
+24;334;Q11652;frequency;yes;f = \frac{1}{T};[('frequency', 'f', 's^-1'), ('period', 'T', 's')];P7235;s^-1;;1*1/T;(f, T);NUMBER;x
+25;335;Q82580;friction;;F_{\mathrm{kf}} = \mu_{\mathrm{kf}} F_N;N/A;P4934, P7235;m kg s^-2;;N/A;N/A;N/A;-
+26;336;Q219207;Galilean transformation;;(t,\mathbf x) \mapsto (t+s,\mathsf R\mathbf x + \mathbf vt + \mathbf y);N/A;P527;N/A;;N/A;N/A;N/A;-
+27;337;Q6806305;generalized momentum;;p_i = \frac{d L}{d \dot{q}_i};N/A;P4934, P7235;N/A;;N/A;N/A;N/A;-
+28;338;Q30006;gravitational acceleration;;g=-\frac{GM}{{R}^2} r;N/A;P527, P4934, P7235;m s^-2;;-G*M/R**2;N/A;-G*M/R**2;-
+29;339;Q11412;gravity;;F_g = - \frac{G m_1 m_2}{r^2} r;N/A;P527;m kg s^-2;;N/A;N/A;N/A;-
+30;340;Q1544012;gravitational potential;;U=-\frac{GMm}{r};N/A;P527;m^2 s^-2;;N/A;N/A;N/A;-
+31;341;Q660488;Hamiltonian operator;;H\left(q,p,t\right) = p*\dot{q} - L\left(q,\dot{q},t\right);[];;N/A;;N/A;N/A;N/A;-
+32;342;Q1060137;Hamilton–Jacobi equation;;X^n + Y^n = Z^n;N/A;P4934;N/A;;Z**n;N/A;Z**n;-
+33;343;Q170282;Hooke's law;yes;F= k X;[('force', 'F', 'm kg s^-2'), ('spring constant', 'k', 'kg s^-2'), ('linear strain', 'X', '1')];P527;m kg s^-2;;X*k;(F, k, X);NUMBER;x
+34;344;Q497332;jerk;;j = \frac{d a}{d t};[('acceleration', 'a', 'm s^-2'), ('duration', 't', 's'), ('jerk', 'j', 'm s^-3')];P4934, P7235;m s^-3;;Derivative(a, t);(a, t, j);Subs(Derivative(a, t), t, 9);-
+35;345;Q46276;kinetic energy;yes;T = \frac{1}{2} m v^2;[('kinetic energy', 'T', 'm^2 kg s^-2'), ('mass', 'm', 'kg'), ('speed', 'v', 'm s^-1')];P7235;m^2 kg s^-2;;1*1/2*m*v**2;(T, m, v);NUMBER;x
+36;346;Q103687426;Lagrangian operator;;L  = T-V;N/A;P527;N/A;;T - V;N/A;T - V;-
+37;347;Q599404;Lorentz factor;;\gamma = \frac{1}{\sqrt{1 - v^2/c^2}};[('velocity', 'v', 'm s^-1'), ('speed of light', 'c', 'm s^-1')];P527;N/A;;N/A;(v, c);N/A;-
+38;348;Q172137;Lorentz force;;F = q(e+ v * B);N/A;P4934, P7235;m kg s^-2;;q*(B*v + E);N/A;q*(B*v + E);-
+39;349;Q217255;Lorentz transformation;;t' = \gamma \left( t - \frac{v x}{c^2} \right),  x' = \gamma \left( x - v t \right);N/A;P527;N/A;;t;N/A;t;-
+40;350;Q35875;mass–energy equivalence;;e= m c^2;[('energy', 'E', 'm^2 kg s^-2'), ('mass', 'm', 'kg'), ('speed of light', 'c', 'm s^-1')];P7235;N/A;;m;(E, m, c);NUMBER;x
+41;351;Q6421317;mechanical impedance;;Z_{m} = Z_{a} A^2;[('acoustic impedance', 'Z_{a}', 'm^-4 kg s^-1'), ('area', 'A', 'm^2'), ('mechanical impedance', 'Z_{m}', 'kg s^-1')];P4934, P7235;kg s^-1;;A**2*Z_a;(Z_{a}, A, Z_{m});49*Z_a;-
+42;352;Q165618;moment of inertia;;J_{Q} = \int r_{Q}^{2} d m;[('radial distance', 'r_{Q}', 'm'), ('mass', 'm', 'kg'), ('moment of inertia', 'J_{Q}', 'm^2 kg')];P4934, P7235;m^2 kg;;N/A;(r_{Q}, m, J_{Q});N/A;-
+43;353;Q41273;momentum;yes;p = m v;[('momentum', 'p', 'm kg s^-1'), ('mass', 'm', 'kg'), ('velocity', 'v', 'm s^-1')];P7235;m kg s^-1;;m*v;(p, m, v);NUMBER;x
+44;354;Q2397319;Newton's second law of motion for constant mass;;F = m * a;N/A;P527, P7235;N/A;;a*m;N/A;a*m;-
+45;355;Q3235565;Newton's third law of motion;;F_{12}=-F_{21};[('force', 'F', 'm kg s^-2')];P527;N/A;;-F_{21};F;N/A;-
+46;356;Q170475;oscillation;;z(t) = A e^{-\zeta \omega_0 t} \sin \left( \sqrt{1 - \zeta^2} \omega_0 t + \varphi \right);N/A;P527;N/A;;A*exp(-omega_0*t*zeta)*sin(omega_0*t*sqrt(1 - zeta**2) + varphi);N/A;exp(-omega_0*t*zeta)*sin(omega_0*t*sqrt(1 - zeta**2) + varphi);-
+47;357;Q20702;pendulum;;\frac{d^2\theta}{dt^2} + \frac{g}{l}\sin\theta = 0;N/A;P527;N/A;;0;N/A;NUMBER;x
+48;358;Q25342;power;;P = \frac{d E}{d t};[('energy', 'E', 'm^2 kg s^-2'), ('duration', 't', 's'), ('power', 'P', 'm^2 kg s^-3')];P4934, P7235;m^2 kg s^-3;;N/A;(E, t, P);N/A;-
+49;359;Q240105;radial velocity;;\omega = \frac{d\phi}{dt} = \frac{v_\perp}{r};N/A;P527;m s^-1;;N/A;N/A;N/A;-
+50;360;Q11663629;rest energy;;E_0 = m_0 c_0^2;[('rest mass', 'm_0', 'kg'), ('speed of light', 'c_0', 'm s^-1'), ('rest energy', 'E_0', 'm^2 kg s^-2')];P4934, P7235;m^2 kg s^-2;;N/A;(m_0, c_0, E_0);N/A;-
+51;361;Q96941619;rest mass;;(m_\mathrm{rest})c^2=\sqrt{E_\mathrm{total}^2-(|p|c)^2};[('mass', 'm', 'kg'), ('speed of light', 'c', 'm s^-1'), ('energy', 'E', 'm^2 kg s^-2'), ('momentum', 'p', 'm kg s^-1')];P4934;kg;;N/A;(m, c, E, p);N/A;-
+52;362;Q676622;Rossby number;;\mathit{Ro} = \frac{v}{2 l \omega_{E} \sin{\varphi}};N/A;P4934, P7235;1;;N/A;N/A;N/A;-
+53;363;Q3711325;speed;yes;v = s / t;[('speed', 'v', 'm s^-1'), ('distance', 's', 'm'), ('duration', 't', 's')];P7235;m s^-1;;s/t;(v, s, t);NUMBER;x
+54;364;Q2111;speed of light;;c=f\lambda;[('frequency', 'f', 's^-1'), ('wavelength', '\\lambda', 'm')];P4934;m s^-1;;N/A;(f, \lambda);N/A;-
+55;365;Q12507;sphere;;x^2+y^2+z^2=r^2;N/A;P527;N/A;;N/A;N/A;N/A;-
+56;366;Q3299367;Spherical pendulum;;\psi(x,t) = A \cos (k x - \omega t+\varphi);N/A;P527;N/A;;N/A;N/A;N/A;-
+57;367;Q824561;Stokes' law;;F_d = 6\pi\,\mu\,R\,V;N/A;P527;N/A;;N/A;N/A;N/A;-
+58;368;Q206175;stress;;\sigma = \frac{dF}{dA};N/A;P527, P4934;m^-1 kg s^-2;;Derivative(F, A);N/A;Subs(Derivative(F, A), A, 4);-
+59;369;Q2822927;stress;;\sigma = \frac{dF}{dA};N/A;P527, P4934;m^-1 kg s^-2;;Derivative(F, A);N/A;Subs(Derivative(F, A), A, 8);-
+60;370;Q103715245;tangential velocity;;v = \omega r;[('velocity', 'v', 'm s^-1'), ('angular velocity', 'v', 's^-1'), ('radius', 'r', 'm')];P527;N/A;;omega;(v, v, r);omega;-
+61;371;Q48103;torque;;T = M * e_{Q};N/A;P7235;m^2 kg s^-2;;E*M;N/A;E*M;-
+62;372;Q376742;uniform motion;;s = vt;N/A;P527;N/A;;t*v;N/A;t*v;-
+63;373;Q11465;velocity;;v = \frac{d r}{d t};N/A;P527, P7235;m s^-1;;N/A;N/A;N/A;-
+64;374;Q192510;wavenumber;;\sigma = 1/\lambda;[('wavenumber', '\\sigma', 'm^-1'), ('wavelength', '\\lambda', 'm')];P7235;m^-1;;1*1/lambda;(\sigma, \lambda);1*1/lambda;-
+65;375;Q42213;work;;A = \int_{\Gamma} F * d r;[('work', 'A', 'm^2 kg s^-2'), ('force', 'F', 'm kg s^-2'), ('position vector', 'r', 'm')];P7235;m^2 kg s^-2;;N/A;(A, F, r);N/A;-

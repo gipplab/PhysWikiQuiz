@@ -6,10 +6,15 @@ import random
 import sympy
 from latex2sympy2 import latex2sympy
 
+import requests
+
 import module1_formula_and_identifier_retrieval as module1
 import module3_identifier_value_generation as module3
 
 filename = 'unit_test_module_workflow_empty.csv'
+
+modes = ['latex2sympy','vmext']
+mode = modes[0]
 
 def write_cell(col_name,row_idx,content):
     table.loc[table.index[row_idx],col_name] = str(content)
@@ -19,15 +24,18 @@ qids = table['QID']
 
 for idx in range(len(qids)):
 
+    # QID
     qid = qids[idx]
     print(qid)
     write_cell('QID',idx,qid)
 
+    # Item
     try:
         item = module1.get_Wikidata_item(qid)
     except:
         pass
 
+    # Name
     try:
         name = module1.get_concept_name(item)
         print(name)
@@ -35,13 +43,15 @@ for idx in range(len(qids)):
         name = 'N/A'
     write_cell('Name', idx, name)
 
+    # Formula
     try:
-        formula = module1.get_defining_formula(item)
-        print(formula)
+        defining_formula = module1.get_defining_formula(item)
+        print(defining_formula)
     except:
-        formula = 'N/A'
-    write_cell('Formula', idx, formula)
+        defining_formula = 'N/A'
+    write_cell('Formula', idx, defining_formula)
 
+    # Properties
     def get_identifier_property_keys(item):
 
         keys = ''
@@ -53,7 +63,6 @@ for idx in range(len(qids)):
                 pass
 
         return keys[:-2]
-
     try:
         identifier_property_keys = get_identifier_property_keys(item)
         print(identifier_property_keys)
@@ -61,6 +70,7 @@ for idx in range(len(qids)):
         identifier_property_keys = 'N/A'
     write_cell('Properties', idx, identifier_property_keys)
 
+    # Formula unit
     try:
         formula_unit = module1.get_formula_unit_dimension(item)
         print(formula_unit)
@@ -68,14 +78,18 @@ for idx in range(len(qids)):
         formula_unit = 'N/A'
     write_cell('Formula unit', idx, formula_unit)
 
+    # Formula sympy
     try:
-        #formula_sympy = latex2sympy(formula)
-        formula_sympy = module3.get_sympy_from_latex_using_vmext_api(formula)
+        if mode == 'latex2sympy':
+            formula_sympy = latex2sympy(defining_formula)
+        elif mode == 'vmext':
+            formula_sympy = module3.get_sympy_from_latex_using_vmext_api(defining_formula)
         print(formula_sympy)
     except:
         formula_sympy = 'N/A'
     write_cell('Formula sympy', idx, formula_sympy)
 
+    # Identifiers
     try:
         formula_identifiers = module1.get_identifier_properties(item)
         print(formula_identifiers)
@@ -83,6 +97,7 @@ for idx in range(len(qids)):
         formula_identifiers = 'N/A'
     write_cell('Identifiers', idx, str(formula_identifiers))
 
+    # Identifiers sympy
     try:
         identifiers_sympy = sympy.symbols(' '.join([identifier[1] for identifier in formula_identifiers]))
         print(identifiers_sympy)
@@ -90,6 +105,33 @@ for idx in range(len(qids)):
         identifiers_sympy = 'N/A'
     write_cell('Identifiers sympy', idx, identifiers_sympy)
 
+    # Sympy solve
+    def get_sympy_solve(defining_formula,identifiers_sympy):
+
+        formula_rearrangements = []
+        # Transform LaTeX to Sympy
+        url = "https://vmext-demo.formulasearchengine.com/math/translation"
+        params = {'cas': 'SymPy', 'genericExperimentalFeatures': 'true', 'latex': defining_formula}
+        response = requests.post(url, params=params)
+        formula_string = response.json()['result']
+        # translate formula lhs and rhs
+        formula_lhs_sympy = sympy.sympify(formula_string.split("==")[0])
+        formula_rhs_sympy = sympy.sympify(formula_string.split("==")[1])
+
+        # Solve equation for different identifiers
+        for identifier in identifiers_sympy:
+            eq = sympy.Eq(lhs=formula_lhs_sympy, rhs=formula_rhs_sympy)
+            formula_rearrangements.append((identifier, sympy.solve(eq, identifier)))
+
+        return formula_rearrangements
+    try:
+        sympy_solve = get_sympy_solve(defining_formula,identifiers_sympy)
+        print(sympy_solve)
+    except:
+        sympy_solve = 'N/A'
+    write_cell('Sympy solve', idx, sympy_solve)
+
+    # Sympy rhs
     def get_sympy_rhs(formula_sympy,formula_identifiers):
 
         rhs_identifier_values = []
@@ -121,6 +163,6 @@ for idx in range(len(qids)):
         sympy_rhs = 'N/A'
     write_cell('Sympy rhs',idx,sympy_rhs)
 
-table.to_csv('unit_test_module_workflow_vmext.csv')
+table.to_csv('unit_test_module_workflow_' + mode + '.csv')
 
 print('end')

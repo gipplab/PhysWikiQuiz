@@ -1,0 +1,11 @@
+﻿Property;Example
+Concept Name;frequency
+Concept QID;Q11652
+Defining formula;f = \frac{1}{T}
+Formula unit;\mathsf{T}^{-1}
+Identifier properties;[('frequency', 'f', 's^-1'), ('period', 'T', 's')]
+Properties in;P7235
+Identifiers sympy;(f, T)
+Formula sympy;1/T
+Sympy rhs;1
+Question text;What is the frequency f, given period T = 1 s ?

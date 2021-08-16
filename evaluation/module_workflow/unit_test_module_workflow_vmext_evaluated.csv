@@ -1,0 +1,72 @@
+GoldID;QID;Name;Working;Identifier Properties;Formula unit;Identifier units;Formula sympy;Identifiers sympy;Sympy solve;Sympy rhs
+310;Q11376;acceleration;no;idf;yes;yes;no;yes;no;no
+311;Q186300;angular acceleration;part;idf;yes;yes;no;yes;no;no
+312;Q834020;angular frequency;yes;idf;yes;yes;yes;yes;yes;yes
+313;Q161254;angular momentum;yes;idf;yes;yes;yes;yes;yes;yes
+314;Q161635;angular velocity;no;idf;yes;no;no;no;no;no
+315;Q2945123;center of mass;no;cf, idf;no;no;yes;no;no;yes
+316;Q2248131;centripetal acceleration;part;cf, idf;yes;yes;no;yes;no;no
+317;Q172881;centripetal force;yes;hp;yes;yes;yes;yes;yes;yes
+318;Q843905;circumference;yes;cf;yes;yes;yes;yes;yes;yes
+319;Q11382;conservation of energy;part;hp;no;yes;yes;yes;no;no
+320;Q2305665;conservation of momentum;no;-;no;no;yes;no;no;no
+321;Q1127660;damping;no;hp;no;no;yes;no;no;yes
+322;Q272621;Dirac equation;no;hp;no;no;no;no;no;no
+323;Q16853908;Dirac equation in curved spacetime;no;hp;no;no;yes;no;no;yes
+324;Q891408;elastic energy;part;cf, idf;yes;yes;yes;yes;yes;no
+325;Q849919;electromagnetic force;no;hp;no;no;yes;no;no;yes
+326;Q103438301;electrostatic force;part;hp;no;yes;no;yes;no;no
+327;Q103439852;energy-momentum relation;part;hp;no;yes;yes;yes;yes;yes
+328;Q166530;escape velocity;no;cf;yes;no;no;no;no;no
+329;Q875744;Euler–Lagrange equation;no;hp;no;no;no;no;no;no
+330;Q11402;force;no;cf, idf;yes;yes;no;yes;no;no
+331;Q1068463;four-momentum;part;hp;no;yes;no;yes;no;no
+332;Q1322540;four-velocity;no;hp;no;no;no;no;no;no
+333;Q140028;free fall;no;hp;no;no;yes;no;no;no
+334;Q11652;frequency;yes;idf;yes;yes;yes;yes;yes;yes
+335;Q82580;friction;no;cf, idf;yes;no;no;no;no;no
+336;Q219207;Galilean transformation;no;hp;no;no;no;no;no;no
+337;Q6806305;generalized momentum;no;cf, idf;no;no;no;no;no;no
+338;Q30006;gravitational acceleration;no;hp, cf, idf;yes;no;yes;no;no;yes
+339;Q11412;gravity;no;hp;yes;no;yes;no;no;yes
+340;Q1544012;gravitational potential;no;hp;yes;no;yes;no;no;yes
+341;Q660488;Hamiltonian operator;no;-;no;no;no;no;no;no
+342;Q1060137;Hamilton–Jacobi equation;no;cf;no;no;yes;no;no;yes
+343;Q170282;Hooke's law;yes;hp;yes;yes;yes;yes;yes;yes
+344;Q497332;jerk;no;cf, idf;yes;yes;no;yes;no;no
+345;Q46276;kinetic energy;yes;idf;yes;yes;yes;yes;yes;yes
+346;Q103687426;Lagrangian operator;no;hp;no;no;yes;no;no;yes
+347;Q599404;Lorentz factor;yes;hp;no;yes;yes;yes;yes;yes
+348;Q172137;Lorentz force;no;cf, idf;yes;no;yes;no;no;yes
+349;Q217255;Lorentz transformation;no;hp;no;no;no;no;no;no
+350;Q35875;mass–energy equivalence;yes;idf;no;yes;yes;yes;yes;yes
+351;Q6421317;mechanical impedance;yes;cf, idf;yes;yes;yes;yes;yes;yes
+352;Q165618;moment of inertia;yes;cf, idf;yes;yes;yes;yes;yes;yes
+353;Q41273;momentum;yes;idf;yes;yes;yes;yes;yes;yes
+354;Q2397319;Newton's second law of motion for constant mass;no;hp, idf;no;no;yes;no;no;yes
+355;Q3235565;Newton's third law of motion;part;hp;no;yes;yes;yes;no;no
+356;Q170475;oscillation;no;hp;no;no;no;no;no;no
+357;Q20702;pendulum;no;hp;no;no;no;no;no;no
+358;Q25342;power;part;cf, idf;yes;yes;no;yes;no;no
+359;Q240105;radial velocity;no;hp;yes;no;no;no;no;no
+360;Q11663629;rest energy;yes;cf, idf;yes;yes;yes;yes;yes;yes
+361;Q96941619;rest mass;yes;cf;yes;yes;yes;yes;no;yes
+362;Q676622;Rossby number;no;cf, idf;no;no;no;no;no;no
+363;Q3711325;speed;yes;idf;yes;yes;yes;yes;yes;yes
+364;Q2111;speed of light;part;cf;yes;yes;no;yes;no;no
+365;Q12507;sphere;no;hp;no;no;yes;no;no;yes
+366;Q3299367;Spherical pendulum;no;hp;no;no;yes;no;no;yes
+367;Q824561;Stokes' law;no;hp;no;no;no;no;no;no
+368;Q206175;stress;no;hp, cf;yes;no;yes;no;no;yes
+369;Q2822927;stress;no;hp, cf;yes;no;yes;no;no;yes
+370;Q103715245;tangential velocity;yes;hp;no;yes;yes;yes;yes;yes
+371;Q48103;torque;no;idf;yes;no;yes;no;no;yes
+372;Q376742;uniform motion;no;hp;no;no;yes;no;no;yes
+373;Q11465;velocity;no;hp, idf;yes;no;no;no;no;no
+374;Q192510;wavenumber;yes;idf;yes;yes;yes;yes;yes;yes
+375;Q42213;work;part;idf;yes;yes;no;yes;no;no
+;;;;;;;;;;
+;;;17 yes, 37 no, 12 part -> 44% question or correction, 26% question and correction, 18% question, 56% none;33 hp, 21 cf, 29 idf, 2 none;35 yes;31 yes;40 yes;31 yes;18 yes;35 yes
+;;;;;35;31;40;31;18;35
+;;;;;0,53030303;0,46969697;0,6;0,46969697;0,27;0,53
+;;;44;97;53;47;60;47;27;53

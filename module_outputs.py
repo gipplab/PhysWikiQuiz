@@ -56,8 +56,8 @@ def generate_question(name):
     ###################################
 
     print('Generating formula rearrangements...\n')
-    # Get formula rearrangements using Computer Algebra Systems (CAS), maybe SymPy
-    #formula_rearrangements = module2.get_random_formula_rearrangements(defining_formula)
+    # Get formula rearrangements using Computer Algebra Systems (CAS), SymPy
+    defining_formula,formula_identifiers,formula_unit_dimension = module2.get_random_formula_rearrangements(defining_formula,formula_identifiers)
 
     #########################################
     # Module 3: Identifier Value Generation #

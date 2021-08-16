@@ -1,1 +1,1 @@
-{"concept": "speed", "question": "Question could not be generated", "question_generated": true, "correct_value": "40", "correct_unit": "m kg s^-2"}
+{"concept": "speed", "question": "What is the duration t, given speed v = 7 m s^-1, distance s = 10 m ?", "question_generated": false, "correct_value": "10/7", "correct_unit": "s"}
