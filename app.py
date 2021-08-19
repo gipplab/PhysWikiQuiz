@@ -24,6 +24,7 @@ def my_form_post():
     concept = ''
     answer = ''
     correction = ''
+    explanation = ''
 
     # Read from cache
     with open('cache.json', 'r') as f:
@@ -36,9 +37,11 @@ def my_form_post():
         # QUESTION GENERATION
         try:
             concept = request.form['concept']
-            question_text, identifier_info, formula_info = generate_question(concept)
+            question_text, identifier_info, formula_info, explanation = generate_question(concept)
             cache['correct_value'] = str(identifier_info[0])
             cache['correct_unit'] = formula_info
+            cache['explanation'] = explanation
+            explanation = ''
             question = question_text
             cache['question_generated'] = True
         except:
@@ -65,6 +68,8 @@ def my_form_post():
                 unit_suffix = 'incorrect!'
             value_text = value_prefix + value_suffix
             unit_text = unit_prefix + unit_suffix
+            # TODO: add references (defining formula,Wikidata item, Wikipedia URL) to correction text
+            explanation = cache['explanation']
             correction = ' '.join([value_text,unit_text])
             cache['question_generated'] = False
 
@@ -77,7 +82,7 @@ def my_form_post():
     with open('cache.json', 'w') as f:
         json.dump(cache,f)
 
-    return render_template('my-form.html',concept=concept,question=question,answer=answer,correction=correction)
+    return render_template('my-form.html',concept=concept,question=question,answer=answer,correction=correction,explanation=explanation)
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -12,6 +12,7 @@ import module2_formula_rearrangement as module2
 import module3_identifier_value_generation as module3
 import module4_question_text_generation as module4
 import module5_solution_value_and_unit_check as module5
+import module6_explanation_text_generation as module6
 
 def generate_question(name):
 
@@ -74,7 +75,13 @@ def generate_question(name):
     question_text = module4.get_question_text(formula_identifiers,identifier_values)
     print(question_text)
 
-    return question_text,identifier_values,formula_unit_dimension
+    #########################################
+    # Module 6: Explanation Text Generation #
+    #########################################
+
+    explanation_text = module6.generate_explanation_text(qid,defining_formula,formula_identifiers,identifier_values)
+
+    return question_text,identifier_values,formula_unit_dimension,explanation_text
 
 def correct_answer(correct_value,correct_unit,answer_input):
 

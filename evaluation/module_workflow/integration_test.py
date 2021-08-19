@@ -10,6 +10,7 @@ import requests
 
 import module1_formula_and_identifier_retrieval as module1
 import module3_identifier_value_generation as module3
+import module6_explanation_text_generation as module6
 
 filename = 'unit_test_module_workflow_empty.csv'
 
@@ -163,6 +164,15 @@ for idx in range(len(qids)):
         sympy_rhs = 'N/A'
     write_cell('Sympy rhs',idx,sympy_rhs)
 
-table.to_csv('unit_test_module_workflow_' + mode + '.csv')
+    # Explanation
+    try:
+        identifier_values = module3.get_random_identifier_values(formula_identifiers, defining_formula)
+        explanation_text = module6.generate_explanation_text(qid,defining_formula,formula_identifiers,identifier_values)
+        print(explanation_text)
+    except:
+        explanation_text = 'N/A'
+    write_cell('Explanation', idx, explanation_text)
+
+table.to_csv('unit_test_module_workflow_explanation_generated_' + mode + '.csv')
 
 print('end')
