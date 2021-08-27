@@ -85,4 +85,4 @@ def my_form_post():
     return render_template('my-form.html',concept=concept,question=question,answer=answer,correction=correction,explanation=explanation)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,host='0.0.0.0')
