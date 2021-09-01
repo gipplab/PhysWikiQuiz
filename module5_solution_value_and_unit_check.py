@@ -21,7 +21,16 @@ def check_value(solution_value,answer_value):
     #answer_value = sympy.Rational(answer_value)
     value_correct = answer_value == solution_value
 
-    #TODO: allow for float tolerance of +- x %
+    # allow for float tolerance of +- 1%
+    try:
+        tolerance = 1/100
+        answer_value = sympy.sympify(answer_value.replace(",", "."))
+        solution_value = sympy.sympify(solution_value)
+        answer_solution_ratio = float(answer_value)/float(solution_value)
+        if 1-tolerance < answer_solution_ratio < 1+tolerance:
+            value_correct = True
+    except:
+        pass
 
     return value_correct
 

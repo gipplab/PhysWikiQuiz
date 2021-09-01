@@ -25,32 +25,40 @@ def generate_question(name):
     # Input Formula Concept name
     print('\nInput Formula Concept name: ',name)
 
-    # Get QID from name
+    # If not QID, get QID from name
     print('\nRetrieving Wikidata item qid...\n')
-    qid = module1.get_qid_sparql_with_defining_formula(name)
+    if name.startswith('Q') and name[1:].isnumeric():
+        qid = name
+    else:
+        qid = module1.get_qid_sparql_with_defining_formula(name)
     print(f'Retrieving formula concept for qid >>{qid}<<...\n')
 
     # Get item from QID
     print('\nRetrieving Wikidata item...\n')
-    item = module1.get_Wikidata_item(qid)
+    try:
+        item = module1.get_Wikidata_item(qid)
+    except:
+        return 'No Wikidata item with formula found', None, None, ''
 
     # Get concept name from item
-    concept_name = module1.get_concept_name(item)
-    print(f'Retrieving formula concept name: >>{concept_name}<<\n')
+    #concept_name = module1.get_concept_name(item)
+    #print(f'Retrieving formula concept name: >>{concept_name}<<\n')
 
     # System output for processing question
-    print(f'Generating physics formula question for >>{concept_name}<<...\n')
+    print(f'Generating physics formula question for >>{name}<<...\n')
 
     # Get defining formula
     defining_formula = module1.get_defining_formula(item)
     print(f'Retrieving defining formula: >>{defining_formula}<<\n')
 
     # Get formula unit dimension
-    formula_unit_dimension = module1.get_formula_unit_dimension(item)
+    #formula_unit_dimension = module1.get_formula_unit_dimension(item)
 
     # Get formula identifier property (name, symbol, unit) triples
     print('Retrieving formula identifier properties...\n')
     formula_identifiers = module1.get_identifier_properties(item)
+    if len(formula_identifiers) == 0:
+        return 'Identifier property retrieval unsuccessful', None, None, ''
 
     ###################################
     # Module 2: Formula Rearrangement #
@@ -66,6 +74,8 @@ def generate_question(name):
 
     print('Generating random identifier values...\n')
     identifier_values = module3.get_random_identifier_values(formula_identifiers,defining_formula)
+    if len(identifier_values) == 0:
+        return 'Identifier value generation unsuccessful', None, None, ''
 
     ######################################
     # Module 4: Question Text Generation #

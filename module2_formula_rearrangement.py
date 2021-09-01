@@ -39,6 +39,9 @@ def get_random_formula_rearrangements(defining_formula,formula_identifiers):
         formula_identifiers_rearranged = lhs_identifier + rhs_identifier
 
     except:
-        pass
+        # if formula rearrangement was not successful
+        defining_formula_rearranged = defining_formula
+        formula_identifiers_rearranged = formula_identifiers
+        formula_unit_dimension = formula_identifiers[0][2]
 
     return defining_formula_rearranged,formula_identifiers_rearranged,formula_unit_dimension
