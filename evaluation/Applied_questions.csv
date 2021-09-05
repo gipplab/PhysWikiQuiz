@@ -1,0 +1,67 @@
+GoldID;QID;Name;Application;Example question
+310;Q11376;acceleration;Cheetah;A cheetah can run from rest to 26 m/s in 3 seconds. How much acceleration gains by cheetah?
+311;Q186300;angular acceleration;flywheel;A flywheel attains angular speed of 18.4 rad s^-1 from rest state in 2.3 sec. What is the magnitude of an angular acceleration gain by a flywheel? 
+312;Q834020;angular frequency;simple harmonic accelerator;A simple harmonic oscillator has frequency 1/2 sec^-1. What is the angular frequency of a simple harmonic oscillator?
+313;Q161254;angular momentum;mass;A point mass of 0.250 kg is in horizontal uniform circular motion. The magnitude of its tangential velocity is 2 m s^-1. The point mass is located at the distance of 0.1 m from the center. What is magnitude of the angular momentum of a point mass? 
+314;Q161635;angular velocity;location on the Earth's Surface;A point is located at the Earth's equator. Earth completes a full revolution (2 pi rad) in about 24 hours (86400 sec). What is the magnitude of angular velocity of point?
+315;Q2945123;center of mass;mass;Two masses of 5 kg and 1 kg are located at distance of 6 m from each other. Find the centre of mass of the system. Assume heavier mass is located at the origin and the line joining two masses as the X-axis.
+316;Q2248131;centripetal acceleration;child;A child of mass 20 kg is sitting on the edge of a merry-go-round that has radius 3 m. The child revolving with uniform tangential velocity of magnitude 5 m s^-1. What is the magnitude of centriptal acceleration of the child? 
+317;Q172881;centripetal force;jet plane;How much the centripetal force exerted on a 15000 kg jet plane that negotiates a 4000 m radius horizontal circular loop at 120 m s^-1?
+318;Q843905;circumference;value of pi;If the circumference of the circle is 16.33 m and the diameter is 5.2 m. What is the approximate value of pi?
+319;Q11382;conservation of energy;marble;A marble of 5 kg drops from the height of 10 m from the ground, where magnitude of the acceleration due to gravity is 9.8 m s^-2. What is the magnitude of the velocity of the marble just before hitting the ground?
+320;Q2305665;conservation of momentum;mass;Two masses of 0.6 kg and 0.2 kg respectively are approaching each other with velocity of 3 m s^-1 along horizontal and frictionless surface. They had head-on completely inelastic collision. After collision they stick to each other and move together. What is magnitude of their combine velocity?
+321;Q1127660;damping;damping system;A damping system has damping factor 0.8 along with spring constant 2 n m^-1 and mass 8 kg. What is the magnitude of constant c (system damping coefficinet)?
+322;Q272621;Dirac equation;;
+323;Q16853908;Dirac equation in curved spacetime;;
+324;Q891408;elastic energy;mass;A mass of 5 kg with spring constant 2 N m^-1 in a ideal spring-mass system is in rest state. A mass is displaced by a force from its equilibrium position and spring-mass system gains elastic energy of 0.375 J. By how much distance from equilibrium position mass has displaced?
+325;Q849919;electromagnetic force;charged particle;A charged particle q enters in a perpendicular direction with velocity 1.7 \times 10^4 m s^-1 to the mutually perpendicular electric field and magnetic field of magnitude 4 N m^-1 and 1.4 T respectively. If electromagnetic force experience by charged particle is approximately 0.048 N. What is the magnitude of charge on the particle?
+326;Q103438301;electrostatic force;Electron;If two electrons (1.6 \times 10^-19 C) are separated from each other in the vacuum at distance of 1 \times 10^-8 m. What is the magnitude of electrostatic force of repulsion between two electrons. (1/4 pi epsilon_0 = 9 \times 10^9 N m^2 C^-2)?
+327;Q103439852;energy-momentum relation;Proton;A proton moving at a speed of v = 0.86c and therefore proton has relativistic momentum p = 1580 MeV/c. Proton has a rest energy 938 MeV. What is the magnitude of the relativistic total energies? 
+328;Q166530;escape velocity;Jupiter;For the Jupiter, equatorial radius is 7.1492 \times 10^7 m and escape velocity is 0.595 \times 10^5 m s^-1. What is the value of the mass of the Jupiter. (Universal gravitational constant = 6.67430 \times 10^-11 m^3 kg^-1 s^-2)?  
+329;Q875744;Euler–Lagrange equation;;
+330;Q11402;force;mass;A force of 10 N acting on the mass of 5 kg. How much acceleration can produce in the mass?  
+331;Q1068463;four-momentum;;
+332;Q1322540;four-velocity;;
+333;Q140028;free fall;Lead ball;A lead ball is thrown from the top of tower with velocity 2 m s^-1. What is its magnitude of velocity after 4 s? The value of acceleration due to gravity is 9.8 m s^-2. Neglect the air resistance.
+334;Q11652;frequency;Tuning fork;For a tuning fork in Clang mode of vibration, the time period is 0.0004 s. What is the frequency of a tuning fork?
+335;Q82580;friction;crate;A force of 300 N is needed to move a 850 N crate across a level surface with constant velocity. What is the value of coefficient of kinetic friction?
+336;Q219207;Galilean transformation;;
+337;Q6806305;generalized momentum;;
+338;Q30006;gravitational acceleration;Mercury;For the Mercury, mass is 3.3011 \times 10^23 kg and equatorial radius is 2439.7 \times 10^3 m. What is the value of acceleration due to gravity on the surface of mercury? (Universal gravitational constant = 6.67430 \times 10^-11 m^3 kg^-1 s^-2)?
+339;Q11412;gravity;mass;Two masses 3 kg and 5 kg are separated from each other at distance of 20 m. What is the magnitude of gravitational force of attraction? (Universal gravitational constant = 6.67430 \times 10^-11 m^3 kg^-1 s^-2).
+340;Q1544012;gravitational potential;Mercury;The planet mercury revolves around the sun in an elliptical orbit. At its perihelion position, it is located at distnace of 4.6 \times 10^3 m. The mass of planet mercury is 3.285 × 10^23 kg and the sun is 1.989 × 10^30 kg. What is the magnitude of gravitational potential due to sun on mercury at perihelion position? (Universal gravitational constant = 6.67430 \times 10^-11 m^3 kg^-1 s^-2).
+341;Q660488;Hamiltonian operator;;
+342;Q1060137;Hamilton–Jacobi equation;;
+343;Q170282;Hooke's law;spring scale;A spring scale in the shop stretches 3.2 cm from its equilibrium position, when 19.2 N of raw material is weighted. What is the value of spring constant?
+344;Q497332;jerk;mass;A mass experiences a change of acceleration of 8 m s^-2 in the arbitrary time interval of 3.2 s. What is the magnitude of jerk produce in the mass? 
+345;Q46276;kinetic energy;bullet;A bullet fired from gun has mass 0.004 kg and constant velocity of 120 m s^-1. What is the kinetic energy of the bullet?
+346;Q103687426;Lagrangian operator;spring-mass system;An ideal spring-mass system is in the state of motion. At certain instant kinetic energy and potential energy of the system is 15 J and 5.6 J respectively. What is the magnitude of Langrangian operator?
+347;Q599404;Lorentz factor;proton;An proton is moving at speed of v = 0.86c. What is the value of Lorentz factor for proton?
+348;Q172137;Lorentz force;blood flowmeter;In a velocity selector of blood flowmeter ions moving to the right at 7 \times 10^3 m s^-1. The electric field is 400 V m^-1 into the page. What is the magnitude of the magnetic field?
+349;Q217255;Lorentz transformation;;
+350;Q35875;mass–energy equivalence;electron;The mass of an electron is 9.1 \times 10^-31 kg. How much is the rest energy of an electron in electron volts?
+351;Q6421317;mechanical impedance;;
+352;Q165618;moment of inertia;flywheel;A flywheel is solid, uniform disk of mass 3 kg and radius 10 \times 10^-2 m. What is moment of inertia of the flywheel?
+353;Q41273;momentum;space rocket;During takeoff a rocket has mass (including fuel) 2 \times 10^6 kg and its velocity is 140 m s^-1. What is the momentum of a rocket?
+354;Q2397319;Newton's second law of motion for constant mass;any mass;The mass of the block is 20 kg. If mass is pulled in vertically upwards direction with force 400 N. What is the acceleration of the block? ( Assume no other forces are present, e.g. gravitation)
+355;Q3235565;Newton's third law of motion;polar bear;A 200 kg polar bear is standing still near frozen lake in Svalbard, Norway. The acceleration due to gravity at that place is approximately 9.8 m \times s^-2. What is the magnitude of the force with which the polar bear pulls on the Earth?
+356;Q170475;oscillation;;
+357;Q20702;pendulum;;
+358;Q25342;power;mascular power;A man runs up the stairs from ground level to the top of building. He spends 4.2 \times 10^5 J energy to reach the top in 600 s. How much muscular power utilises by man? 
+359;Q240105;radial velocity;centrifuge ;The radius of the centrifuge is 15 \times 10^-2 m and it spins at 270 pi rad s^-1. What is radial velocity of an object moving at the outer edge?
+360;Q11663629;rest energy;electron;The mass of an electron is 9.109 \times 10^-31 kg. Speed of light is 2.998 \times 10^8 m s^-1. What is magnitude of rest energy associated with the electron?
+361;Q96941619;rest mass;neutron;The rest energy associated with the neutron is 1.5054277 \times 10^-10 J. Speed of light is 2.998 \times 10^8 m s^-1. What is magnitude of rest mass of neutron?
+362;Q676622;Rossby number;Earth;For the Earth speed at equator, characteristic length, earth's angular frequency and latitude is 10 ms^-1, 6 \times 10^6 m, 7.292 \times 10^-5 rad s^-1 and 45 degrees. What is the value of Rossby number for the Earth?
+363;Q3711325;speed;Car;A car drives with a speed of 3 m/s. How much distance can it cover in 1 s?
+364;Q2111;speed of light;gamma rays;In an electromagnetic spectrum a hard gamma rays has wavelength 1 \times 10^-18 m and frequency 3 \times 10^26 s^-1. What is the speed of light?
+365;Q12507;sphere;sphere;A sphere has centre at origin. The cartesian co-ordinates of arbitrary point on it surface are (1,2,3). What is the radius of the sphere? 
+366;Q3299367;Spherical pendulum;spherical pendulum;The amplitude, wavenumber, angular velocity and phase for spherical pendulum is 0.5 m, pi/3 rad m^-1, 2*pi/3 rad s^-1 and pi/2 respectively. What is linear strain in the spherical pendulum at the instant of when location is 2 m and time is 5 s?
+367;Q824561;Stokes' law;pollen grain;During experiment light weight pollen grains dropped inside a clear glass cylinder and observed their motion with a microscope. A radius of 15 \times 10^-6 m pollen grain was observed to fall at a rate of 4.7 \times 10^-2 m s^-1. A dynamic viscosity of air inside glass cylinder is 1.849 \times 10^-5 kg m^-1 s^-1. What is magnitudeof frictional force exerting on pollen grains?
+368;Q206175;stress;femur bone;A cross-section area of the bone in the femur of 784 N person is 5.1 \times 10^-4 m^-2. What is the net stress on the femur?
+369;Q2822927;tangential acceleration;sprocket-wheel;A tip of sprocket-wheel of racing changes the magnitude of tangential velocity from rest to 30 m s^-1 in 1.2 s. What is magnitude of the tangential acceleration of a tip of sprocket-wheel?
+370;Q103715245;tangential velocity;blade of wind turbine;The tip of a large wind turbine blade is at distance of 40 m from centre of axis of rotation. The magnitude of angular velocity of the blade is 2 rad s^-1. What is the magnitude of tangential velocity? 
+371;Q48103;torque;door of bank valut ;To open a giant door of bank vault needs minimum torque of 35 N m when a tangential force F is applied at a distance 1.3 m from the axis of rotation. What is magnitude of force F?
+372;Q376742;uniform motion;yacht;A yacht makes a short rectilinear trips between two nearby islands with constant velocity of magnitude 14.4 m s^-1 in 372 s. What is the displacement of a yacht in one way trip?
+373;Q11465;velocity;athlete;An athelete sprints in a straight line for 100 m in 9.2 s. What is his velocity?
+374;Q192510;wavenumber;microwave oven;A household microwave oven operates at the wavelength of 12.24 * 10^-2 m. What is the value of corresponding wavenumber?
+375;Q42213;work;sled;A dog tugs a sled 5 m on snowy track at a constant speed with  the force of 300 N. How much work does the dog do?
