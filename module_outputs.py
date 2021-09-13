@@ -48,15 +48,21 @@ def generate_question(name):
     print(f'Generating physics formula question for >>{name}<<...\n')
 
     # Get defining formula
-    defining_formula = module1.get_defining_formula(item)
-    print(f'Retrieving defining formula: >>{defining_formula}<<\n')
+    try:
+        defining_formula = module1.get_defining_formula(item)
+    except:
+        return 'Defining formula retrieval unsuccessful', None, None, ''
+    print(f'Retrieved defining formula: >>{defining_formula}<<\n')
 
     # Get formula unit dimension
     #formula_unit_dimension = module1.get_formula_unit_dimension(item)
 
     # Get formula identifier property (name, symbol, unit) triples
     print('Retrieving formula identifier properties...\n')
-    formula_identifiers = module1.get_identifier_properties(item)
+    try:
+        formula_identifiers = module1.get_identifier_properties(item)
+    except:
+        return 'Identifier property retrieval unsuccessful', None, None, ''
     if len(formula_identifiers) == 0:
         return 'Identifier property retrieval unsuccessful', None, None, ''
 
@@ -73,7 +79,10 @@ def generate_question(name):
     #########################################
 
     print('Generating random identifier values...\n')
-    identifier_values = module3.get_random_identifier_values(formula_identifiers,defining_formula)
+    try:
+        identifier_values = module3.get_random_identifier_values(formula_identifiers,defining_formula)
+    except:
+        return 'Identifier value generation unsuccessful', None, None, ''
     if len(identifier_values) == 0:
         return 'Identifier value generation unsuccessful', None, None, ''
 
