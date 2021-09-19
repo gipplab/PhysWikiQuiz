@@ -173,6 +173,9 @@ for idx in range(len(qids)):
         explanation_text = 'N/A'
     write_cell('Explanation', idx, explanation_text)
 
+    # Empty line
+    print()
+
 table.to_csv('unit_test_module_workflow_explanation_generated_' + mode + '.csv')
 
 print('end')
