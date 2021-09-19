@@ -28,7 +28,7 @@ PhysWikiQuiz employs the open access semantic knowledge-base [Wikidata](https://
 
 **The following diagram illustrates the fundamental workflow of the system.**
 
-![Fundamental Workflow](images/PhyswikiQuiz_workflow.png)
+![Fundamental Workflow](images/PhysWikiQuiz_workflow.png)
 
 In module 1, formula and identifier data is retrieved from [Wikidata](https://wikidata.org). In module 2, the formula is rearranged using the python CAS [Sympy](https://www.sympy.org). In module 3, random values are generated for the formula identifiers. In module 4, the question text is generated from the available information. In module 5, the student's answer is compared to the system's solution. Finally, module 6 generates an explanation text for the student. In case some step or module can not be successfully executed, the user is notified, e.g., 'No Wikidata item with formula found'.
 
@@ -36,7 +36,7 @@ In module 1, formula and identifier data is retrieved from [Wikidata](https://wi
 
 The following figure shows an example expression tree for "acceleration". Below each of the identifier symbols a, v, and t, information about its properties (Wikidata item name and QID, unit dimension) is displayed.
 
-   ![Workflow diagram for acceleration](images/PhysWikiQuiz_workflow_acceleration.png)
+![Workflow diagram for acceleration](images/PhysWikiQuiz_workflow_acceleration.png)
 
 We now describe the module tasks using the example.
 
@@ -61,11 +61,14 @@ We now describe the module tasks using the example.
 **Module 4** generates a **well-structured question in natural language** by using the available names, symbols, and values for the occurring formula identifiers.
 
  * **In our example case**:
-   What is the acceleration a, given velocity v = 4 m s^-1, duration t = 5 s?​
+   "What is the acceleration a, given velocity v = 4 m s^-1, duration t = 5 s?"
 
 **Module 5 checks the solution value and unit** entered by the user and displays a correctness assessment.
 
 **Module 6 generates an explanation text** with the formula (including source) and a calculation path for the student's understanding.
+
+ * **In our example case**:
+   "Solution from www.wikidata.org/wiki/Q11376 formula a = v/t with 4/5 m s^-2 = 4 m s^-1 / 5 s ."
 
 In the following, you can see the final stage of the system, after finishing all tasks:
    ![final stage](images/PhysWikiQuiz_acceleration.png)
