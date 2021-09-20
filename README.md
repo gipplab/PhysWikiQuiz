@@ -1,12 +1,12 @@
 ## PhysWikiQuiz 
 
-We present **PhysWikiQuiz**, a Physics Questions Generation and Interrogation System. The system can generate physics questions from [Wikidata](https://wikidata.org) items, given a Formula Concept Name or QID (e.g., 'speed' or 'Q11376') user input. Each question contains comprehensive details of the involved physical quantities, and randomly generated numerical values. In a consecutive step, a student can input an possible answer. The system then checks the correctness of the user input in terms of value and unit respectively. In the last stage, the system finally generates an correct explanation of the solution, including its calculation path.
+We present **PhysWikiQuiz**, a Physics Questions Generation and Interrogation System. The system can generate physics questions from [Wikidata](https://wikidata.org) items, given a Formula Concept Name or QID (e.g., 'speed' or 'Q11376') user input. Each question contains comprehensive details of the involved physical quantities, and randomly generated numerical values. In a consecutive step, a student can input an answer. The system then checks the correctness of the user input in terms of quantity value and unit respectively. In the last stage, the system finally generates a correct explanation of the solution, including its calculation path.
 
 **PhysWikiQuiz** is a web-based system, implemented with Flask, a micro web-framework written in Python. The required metadata for formulae is retrieved from [Wikidata](https://wikidata.org) by means of [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) queries or [Pywikibot](https://www.mediawiki.org/wiki/Manual:Pywikibot).
 
 ## Motivation
 
-Examination is the essential part for every student’s academic life. A large portion of any Physics examination is based upon formula based numerical examples. This system accelerates the process of examination preparation by generating large numbers of novel questions from the open and continuously evolving source database [Wikidata](https://wikidata.org). The question generation helps students to have study material to train for exams and professors or tutors to automatically prepare exam sheets, which significantly reduces their time efforts. Moreover, generating different questions and values for each student separately makes student cheating more difficult.
+Examination is the essential part in every student’s academic life. A significant portion of any physics examination is based upon formula based numerical examples. This system accelerates the process of examination preparation by generating large numbers of novel questions from the open and continuously evolving semantic knowledge-base [Wikidata](https://wikidata.org). The question generation helps students to have study material to train for exams and teachers, tutors, or professors to automatically prepare exam sheets, which significantly reduces their time efforts. Moreover, generating different questions and values for each student separately makes student cheating more difficult.
 
 ## Demo Examples
 
@@ -24,7 +24,7 @@ You also find a video demonstration of the PhysWikiQuiz system and its evaluatio
 
 ## System Workflow
 
-PhysWikiQuiz employs the open access semantic knowledge-base [Wikidata](https://wikidata.org) to retrieve Wikimedia community-curated physics formulae with identifier properties and units using their concept name as input. A given formula is then rearranged, i.e., solved for each occurring identifier by a Computer Algebra System (CAS) to create more question families. For each rearrangement family, random identifier values are generated (in a specified range). Finally, the system compares the student's answer input to a CAS computed solution for both value and unit separately and generates an explanation text.
+PhysWikiQuiz employs the open access semantic knowledge-base [Wikidata](https://wikidata.org) to retrieve Wikimedia community-curated physics formulae with identifier properties and units using their concept name as input. A given formula is then rearranged, i.e., solved for each occurring identifier by a Computer Algebra System (CAS) to create several question families. For each rearrangement, random identifier values are generated (in a specified range). Finally, the system compares the student's answer input to a CAS computed solution for both value and unit separately and generates an explanation text.
 
 **The following diagram illustrates the fundamental workflow of the system.**
 
@@ -40,37 +40,43 @@ The following figure shows an example expression tree for "acceleration". Below 
 
 We now describe the module tasks using the example.
 
-**Module 1** retrieves **formula and identifier information** from Wikidata properties:
+**Module 1** retrieves **formula and identifier information** from Wikidata properties.
 
+ In our example case:
  * 'defining formula' (P2534): 'a=\frac{dv}{dt}'
  * 'in defining formula' (P7235): 'a'
  * 'has part' (P527) or 'calculated from' (P4934):
     * 'velocity' (Q11465)
     * 'duration' (Q2199864)
 
-**Module 2** generates **various possible rearrangements** of the retrieved formula:
+**Module 2** generates **various possible rearrangements** of the retrieved formula.
 
+ In our example case:
  * <img src="https://render.githubusercontent.com/render/math?math=a = \frac{v}{t}">
  * <img src="https://render.githubusercontent.com/render/math?math=t = \frac{v}{a}">
  * <img src="https://render.githubusercontent.com/render/math?math=v = a \times t">
 
-**Module 3** generates **random numerical values** for the unknown identifier variables and performs the required mathematical operations in order to calculate the **numerical value of the desired identifier**:
+**Module 3** generates **random numerical values** for the unknown identifier variables and performs the required mathematical operations in order to calculate the **numerical value of the desired identifier**.
 
- * For the two available formula rearrangements <img src="https://render.githubusercontent.com/render/math?math=a = \frac{v}{t}">, <img src="https://render.githubusercontent.com/render/math?math=t = \frac{v}{a}">, and <img src="https://render.githubusercontent.com/render/math?math=v = a \times t">, the system calculates the respective right-hand side identifier values by performing the required multiplication or division operation. The result is later compared to the user input to check its correctness.​
+ In our example case:
+   For the two available formula rearrangements <img src="https://render.githubusercontent.com/render/math?math=a = \frac{v}{t}">, <img src="https://render.githubusercontent.com/render/math?math=t = \frac{v}{a}">, and <img src="https://render.githubusercontent.com/render/math?math=v = a \times t">, the system calculates the respective right-hand side identifier values by performing the required multiplication or division operation. The result is later compared to the user input to check its correctness.​
 
 **Module 4** generates a **well-structured question in natural language** by using the available names, symbols, and values for the occurring formula identifiers.
 
- * **In our example case**:
+ In our example case:
    "What is the acceleration a, given velocity v = 4 m s^-1, duration t = 5 s?"
 
 **Module 5 checks the solution value and unit** entered by the user and displays a correctness assessment.
 
+ In our example case:
+   If the user entered "4/5 m s^-2" value and unit are correct. If it was "4 m s^-2", only the unit is correct. If it was "4/5 m", only the value is correct.
+
 **Module 6 generates an explanation text** with the formula (including source) and a calculation path for the student's understanding.
 
- * **In our example case**:
+ In our example case:
    "Solution from www.wikidata.org/wiki/Q11376 formula a = v/t with 4/5 m s^-2 = 4 m s^-1 / 5 s ."
 
-In the following, you can see the final stage of the system, after finishing all tasks:
+In the following, you can see the **final stage of the system**, after finishing all tasks:
    ![final stage](images/PhysWikiQuiz_acceleration.png)
 
 ## Number of Questions
@@ -80,7 +86,7 @@ In principle, PhysWikiQuiz does not depend on formula rearrangements and the wor
 The number of questions generated by >>PhysWikiQuiz<< can be calculated as N_generated =  R_values * (N_identifiers - 1)
 with
 N_identifiers: Number of identifiers in Formula Concept,
-R_values = 10: Range for random identifier value generation (here from 1-10).
+R_values = 10: Range for random identifier value generation (here from 1 to 10).
 
 This leads to the following table:
 
@@ -101,7 +107,17 @@ It is evident that for large formulae, PhysWikiQuiz can generate a tremendous am
 
 ## Evaluation on Benchmark
 
-unit_test_module_workflow_latex2sympy_evaluated(short).png
+We made a detailed PhysWikiQuiz system evaluation at each individual stage of its workflow. We carried out unit tests for the different modules and an integration test to assess the overall performance on a Formula Concept benchmark dataset.
+
+### Benchmark Dataset
+
+The open-access platform [MathMLben](https://mathmlben.wmflabs.org) stores and displays a benchmark of semantically annotated mathematical formulae. They were extracted from [Wikipedia](https://en.wikipedia.org), the [arXiv](https://arxiv.org) and the Digital Library of Mathematical Functions [DLMF](https://dlmf.nist.gov) and augmented by Wikidata markup. The benchmark can be used to evaluate a variety of MathIR tasks, such as the automatic conversion between different CAS or Mathematical Question Answering [MathQA](https://mathqa.wmflabs.org). In our PhysWikiQuiz evaluation, we employ a selection of 66 formulae (GoldID 310-375) from the MathMLben goldstandard. The Formula Concepts were extracted from Wikipedia articles using the formula and identifier annotation recommendation system [AnnoMathTeX](https://annomathtex.wmflabs.org).
+
+The following table shows the PhysWikiQuiz system performance on the selected Formula Concept benchmark (MathMLben GoldID 310-375). For each concept, e.g., 'speed', the results of the different modules is displayed. At the bottom the total percentage of the available functionality is provided.
+
+[Unit Test Module Workflow](images/unit_test_module_workflow.png)
+
+All result tables and evaluation logs can be found [here](evaluation/module_workflow).
 
 ## Installation Dependencies
 
@@ -152,10 +168,10 @@ git clone https://github.com/ag-gipp/PhysWikiQuiz.git
  * [Wikidata](https://wikidata.org): A SPARQL query to the [Wikidata Query Services API](https://query.wikidata.org) retrieves lists or properties of [Wikidata items](https://en.wikipedia.org/wiki/Wikidata#Items)
  * [VMEXT](https://vmext-demo.formulasearchengine.com/swagger-ui.html): LaTeX to SymPy formula conversion is done via the 'LaCASt' translator
 
-## Authors
+<!---## Authors
 
 * Philipp Scharpf
-* Moritz Schubotz
+* Moritz Schubotz --->
 
 ## License
 
