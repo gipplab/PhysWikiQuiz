@@ -11,42 +11,42 @@ GoldID;QID;Name;Application;Example question
 319;Q11382;conservation of energy;marble;A marble of 5 kg drops from a height of 10 m from the ground, where the magnitude of the acceleration due to gravity is 9.8 m s^-2. What is the magnitude of the velocity of the marble just before hitting the ground?
 320;Q2305665;conservation of momentum;mass;Two masses of 0.6 kg and 0.2 kg respectively are approaching each other with a velocity of 3 m s^-1 along a horizontal and frictionless surface. They have a head-on, completely inelastic collision. After the collision, they stick to each other and move together. What is the magnitude of their combined velocity?
 321;Q1127660;damping;damping system;A damping system has a damping factor of 0.8 along with a spring constant of 2 N m^-1 and mass 8 kg. What is the magnitude of its damping coefficient?
-322;Q272621;Dirac equation;;
-323;Q16853908;Dirac equation in curved spacetime;;
+322;Q272621;Dirac equation;Not applicable;Not applicable
+323;Q16853908;Dirac equation in curved spacetime;Not applicable;Not applicable
 324;Q891408;elastic energy;mass;A mass of 5 kg with spring constant 2 N m^-1 in an ideal spring-mass system is in rest state. A mass is displaced by a force from its equilibrium position and the spring-mass system gains an elastic energy of 0.38 J. By how much distance from the equilibrium position has the mass been displaced?
 325;Q849919;electromagnetic force;charged particle;A charged particle q enters in a perpendicular direction with velocity 1.7 \times 10^4 m s^-1 to the mutually perpendicular electric field and magnetic field of magnitude 4 N m^-1 and 1.4 T, respectively. If the electromagnetic force experienced by the charged particle is approximately 0.05 N, what is the magnitude of the particle's charge?
 326;Q103438301;electrostatic force;Electron;Two electrons (charge 1.6 \times 10^-19 C) are separated from each other in the vacuum at a distance of 1 \times 10^-8 m. What is the magnitude of the electrostatic force of repulsion between the two electrons? Assume electric constant 1/4 \pi epsilon_0 = 9 \times 10^9 N m^2 C^-2.
 327;Q103439852;energy-momentum relation;Proton;A proton moving at a speed of v = 0.86 c and therefore has a relativistic momentum of p = 1580 MeV/c. The proton has a rest energy of 938 MeV. What is the magnitude of its total relativistic energy?
 328;Q166530;escape velocity;Jupiter;Jupiter's equatorial radius is 7.1492 \times 10^7 m and escape velocity is 0.595 \times 10^5 m s^-1. What is the value of the mass of jupiter? Assume the universal gravitational constant being 6.67430 \times 10^-11 m^3 kg^-1 s^-2. 
-329;Q875744;Euler–Lagrange equation;;
+329;Q875744;Euler–Lagrange equation;Not applicable;Not applicable
 330;Q11402;force;mass;A force of 10 N is acting on a mass of 5 kg. How much acceleration is resulting?  
-331;Q1068463;four-momentum;;
-332;Q1322540;four-velocity;;
+331;Q1068463;four-momentum;Not applicable;Not applicable
+332;Q1322540;four-velocity;Not applicable;Not applicable
 333;Q140028;free fall;Lead ball;A lead ball is thrown from the top of a tower with a velocity of 2 m s^-1. What is its magnitude of the velocity after 4 s? The value of acceleration due to gravity is 9.8 m s^-2. Neglect the air resistance.
 334;Q11652;frequency;Tuning fork;For a tuning fork in Clang mode of vibration, the time period is 0.0004 s. What is the frequency?
 335;Q82580;friction;crate;A force of 300 N is needed to move a 850 N crate across a level surface with constant velocity. What is the value of the coefficient of the kinetic friction?
-336;Q219207;Galilean transformation;;
-337;Q6806305;generalized momentum;;
+336;Q219207;Galilean transformation;Not applicable;Not applicable
+337;Q6806305;generalized momentum;Not applicable;Not applicable
 338;Q30006;gravitational acceleration;Mercury;The mass of mercury is 3.3011 \times 10^23 kg with an equatorial radius of 2439.7 \times 10^3 m. What is the value of acceleration due to gravity on the surface of mercury? Assume n universal gravitational constant of 6.67430 \times 10^-11 m^3 kg^-1 s^-2).
 339;Q11412;gravity;mass;Two masses of 3 kg and 5 kg are separated from each other at a distance of 20 m. What is the magnitude of the gravitational force of attraction? Assume a universal gravitational constant of 6.67430 \times 10^-11 m^3 kg^-1 s^-2.
 340;Q1544012;gravitational potential;Mercury;The planet mercury revolves around the sun in an elliptical orbit. At its perihelion position, it is located at a distance of 4.6 \times 10^3 m. The mass of mercury is 3.285 × 10^23 kg and the sun weighs 1.989 × 10^30 kg. What is the magnitude of the gravitational potential due to the sun on mercury at perihelion position? Assume a universal gravitational constant of 6.67430 \times 10^-11 m^3 kg^-1 s^-2.
-341;Q660488;Hamiltonian operator;;
-342;Q1060137;Hamilton–Jacobi equation;;
+341;Q660488;Hamiltonian operator;Not applicable;Not applicable
+342;Q1060137;Hamilton–Jacobi equation;Not applicable;Not applicable
 343;Q170282;Hooke's law;spring scale;A spring scale in a shop stretches 3.2 cm from its equilibrium position, when 19.2 N of raw material is weighted. What is the value of the spring constant?
 344;Q497332;jerk;mass;A mass experiences a change of acceleration of 8 m s^-2 in a time interval of 3.2 s. What is the magnitude of jerk exerted on the mass? 
 345;Q46276;kinetic energy;bullet;A bullet fired from a gun has a mass of 0.004 kg and a constant velocity of 120 m s^-1. What is the kinetic energy of the bullet?
 346;Q103687426;Lagrangian operator;spring-mass system;An ideal spring-mass system is in the state of motion. It has a kinetic energy of 15.0 J and potential energy of 5.6 J. What is the magnitude of Langrangian operator?
 347;Q599404;Lorentz factor;proton;A proton is moving at a speed of v = 0.86c. What is the value of the Lorentz factor?
 348;Q172137;Lorentz force;blood flowmeter;In a velocity selector of a blood flowmeter, ions move to the right at 7 \times 10^3 m s^-1. The electric field is 400 V m^-1. What is the magnitude of the magnetic field?
-349;Q217255;Lorentz transformation;;
+349;Q217255;Lorentz transformation;Not applicable;Not applicable
 350;Q35875;mass–energy equivalence;electron;The mass of an electron is 9.1 \times 10^-31 kg. How much is the rest energy of an electron in electron-volts?
-351;Q6421317;mechanical impedance;;
+351;Q6421317;mechanical impedance;Not applicable;Not applicable
 352;Q165618;moment of inertia;flywheel;A flywheel is a solid, uniform disk of mass 3 kg and radius 10 \times 10^-2 m. What is moment of inertia of the flywheel?
 353;Q41273;momentum;space rocket;During takeoff, a rocket has mass (including fuel) of 2 \times 10^6 kg, and its velocity is 140 m s^-1. What is the momentum of the rocket?
 354;Q2397319;Newton's second law of motion for constant mass;block;The mass of a block is 20 kg. If the mass is pulled vertically upwards with a force of 400 N. What is the acceleration of the block? Assume no other forces like, for example, gravitation are present.
 355;Q3235565;Newton's third law of motion;polar bear;A 200 kg polar bear is standing still near a frozen lake in Svalbard, Norway. The acceleration due to gravity at that place is approximately 9.8 m \times s^-2. What is the magnitude of the force with which the polar bear pulls on the earth?
-356;Q170475;oscillation;;
-357;Q20702;pendulum;;
+356;Q170475;oscillation;Not applicable;Not applicable
+357;Q20702;pendulum;Not applicable;Not applicable
 358;Q25342;power;mascular power;A man runs up the stairs from ground level to the top of the building. He spends 4.2 \times 10^5 J energy to reach the top in 600 s. How much muscular power is utilised by the man? 
 359;Q240105;radial velocity;centrifuge ;The radius of a centrifuge is 15 \times 10^-2 m and it spins at 270 pi rad s^-1. What is the radial velocity of an object moving at the outer edge?
 360;Q11663629;rest energy;electron;The mass of an electron is 9.109 \times 10^-31 kg. The speed of light is 2.998 \times 10^8 m s^-1. What is the magnitude of the rest energy associated with the electron?
