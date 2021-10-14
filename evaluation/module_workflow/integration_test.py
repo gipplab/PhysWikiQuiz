@@ -10,12 +10,13 @@ import requests
 
 import module1_formula_and_identifier_retrieval as module1
 import module3_identifier_value_generation as module3
+import module4_question_text_generation as module4
 import module6_explanation_text_generation as module6
 
 filename = 'unit_test_module_workflow_empty.csv'
 
-modes = ['latex2sympy','vmext']
-mode = modes[0]
+modes = ['latex2sympy','lacast']
+mode = modes[1]
 
 def write_cell(col_name,row_idx,content):
     table.loc[table.index[row_idx],col_name] = str(content)
@@ -83,7 +84,7 @@ for idx in range(len(qids)):
     try:
         if mode == 'latex2sympy':
             formula_sympy = latex2sympy(defining_formula)
-        elif mode == 'vmext':
+        elif mode == 'lacast':
             formula_sympy = module3.get_sympy_from_latex_using_vmext_api(defining_formula)
         print(formula_sympy)
     except:
@@ -164,9 +165,17 @@ for idx in range(len(qids)):
         sympy_rhs = 'N/A'
     write_cell('Sympy rhs',idx,sympy_rhs)
 
-    # Explanation
+    # Question
     try:
         identifier_values = module3.get_random_identifier_values(formula_identifiers, defining_formula)
+        question_text = module4.get_question_text(formula_identifiers,identifier_values,)
+        print(question_text)
+    except:
+        question_text = 'N/A'
+    write_cell('Question', idx, question_text)
+
+    # Explanation
+    try:
         explanation_text = module6.generate_explanation_text(qid,defining_formula,formula_identifiers,identifier_values)
         print(explanation_text)
     except:
@@ -176,6 +185,6 @@ for idx in range(len(qids)):
     # Empty line
     print()
 
-table.to_csv('unit_test_module_workflow_explanation_generated_' + mode + '.csv')
+table.to_csv('unit_test_module_workflow_' + mode + '_generated.csv')
 
 print('end')

@@ -12,6 +12,26 @@ with open('latex_cleanings_simple.csv') as f:
 with open('latex_cleanings_argument.txt') as f:
     cleanings_argument = f.readlines()
 
+def derivative_to_division(latex_string):
+    deriv_start_str = '\\frac{d'
+    deriv_middle_str = '}{d'
+    deriv_end_str = '}'
+    if deriv_start_str in latex_string and deriv_end_str in latex_string:
+        start_idx = latex_string.find(deriv_start_str) + len(deriv_start_str)
+        deriv_content = latex_string[start_idx:]
+        deriv_content = deriv_content.replace(deriv_middle_str,'/')
+        try:
+            end_idx = deriv_content.find(deriv_end_str)[0]
+        except:
+            end_idx = deriv_content.find(deriv_end_str)
+        deriv_content = deriv_content[0:end_idx].strip('}')
+        if '=' in latex_string:
+            equal_sign_idx = latex_string.find('=')
+            latex_string = latex_string[:equal_sign_idx+1] + deriv_content
+        else:
+            latex_string = deriv_content
+    return latex_string
+
 def clean_latex(latex_string):
     """Clean LaTeX formula for converter."""
 
@@ -21,6 +41,9 @@ def clean_latex(latex_string):
         for letter in alphabet:
             clean = cleaning.strip('\n').replace('x', letter)
             latex_string = latex_string.replace(clean, letter)
+
+    # derivative cleanings
+    #latex_string = derivative_to_division(latex_string)
 
     # simple cleanings
     for cleaning in cleanings_simple:
