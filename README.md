@@ -28,7 +28,7 @@ PhysWikiQuiz employs the open access semantic knowledge-base [Wikidata](https://
 
 **The following diagram illustrates the fundamental workflow of the system.**
 
-![Fundamental Workflow](images/PhysWikiQuiz_workflow.png)
+![Fundamental Workflow](images/PhysWikiQuiz-Workflow_white.png)
 
 In module 1, formula and identifier data is retrieved from [Wikidata](https://wikidata.org). In module 2, the formula is rearranged using the python CAS [Sympy](https://www.sympy.org). In module 3, random values are generated for the formula identifiers. In module 4, the question text is generated from the available information. In module 5, the student's answer is compared to the system's solution. Finally, module 6 generates an explanation text for the student. In case some step or module can not be successfully executed, the user is notified, e.g., 'No Wikidata item with formula found'.
 
