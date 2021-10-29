@@ -11,9 +11,7 @@ import json
 #https://github.com/ag-gipp/MathQA
 #https://github.com/askplatypus/platypus-ui
 
-#TODO: write readme
-#TODO: link repo and video (if made and uploaded) on frontpage
-#TODO: sparql query to display all items with def.form. and id.prop.s -> examples
+#TODO: multilinguality employing Wikidata
 
 app = Flask(__name__)
 

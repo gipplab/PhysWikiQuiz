@@ -36,6 +36,9 @@ def check_value(solution_value,answer_value):
 
 def check_unit(formula_unit_dimension,answer_unit):
     """Check if input unit corresponds to formula unit."""
-    unit_correct = answer_unit == formula_unit_dimension
+    #unit_correct = answer_unit == formula_unit_dimension
+    answer_units = set(answer_unit.split())
+    correct_units = set(formula_unit_dimension.split())
+    unit_correct = answer_units == correct_units
 
     return unit_correct
