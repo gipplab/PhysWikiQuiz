@@ -1,10 +1,13 @@
+ c, C
 c ,C
+ E, e
 E ,e
+ r, R
 r ,R
 \cdot,*
 \times,*
 \partial,
 {d ,{
-{,
-},
 I,J
+\boldsymbol,
+\omega,w
