@@ -9,11 +9,14 @@ def get_lhs_identifier_properties(formula_identifiers):
 def get_answer_value_and_unit(answer_input):
     """Get answer value and unit from parsing user answer input."""
     answer_value_unit = answer_input.split()
-    answer_value = answer_value_unit[0]
-    answer_unit = ' '.join(answer_value_unit[1:])
-    if len(answer_unit) == 0:
-        print("Please input value AND unit!")
+    if len(answer_value_unit) == 1:
+        print("Please input value AND unit (space-separated)!")
+        answer_value = None
         answer_unit = None
+    elif len(answer_value_unit) > 1:
+        answer_value = answer_value_unit[0]
+        answer_unit = ' '.join(answer_value_unit[1:])
+
     return answer_value,answer_unit
 
 def check_value(solution_value,answer_value):
@@ -37,8 +40,12 @@ def check_value(solution_value,answer_value):
 def check_unit(formula_unit_dimension,answer_unit):
     """Check if input unit corresponds to formula unit."""
     #unit_correct = answer_unit == formula_unit_dimension
-    answer_units = set(answer_unit.split())
-    correct_units = set(formula_unit_dimension.split())
-    unit_correct = answer_units == correct_units
+    try:
+        answer_units = set(answer_unit.split())
+        correct_units = set(formula_unit_dimension.split())
+        unit_correct = answer_units == correct_units
+
+    except:
+        unit_correct = False
 
     return unit_correct

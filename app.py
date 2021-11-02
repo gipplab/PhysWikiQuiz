@@ -12,6 +12,18 @@ import json
 #https://github.com/askplatypus/platypus-ui
 
 #TODO: multilinguality employing Wikidata
+#TODO: teacher and student login and question distribution
+
+#Example item issues:
+#-Hooke's law
+#-mechanical impedance
+#-tangential velocity
+#Additional issues:
+#-phase velocity (Q13824)
+#-mechanical energy (Q184550)
+
+#Example item additions:
+#-
 
 app = Flask(__name__)
 
@@ -81,7 +93,7 @@ def my_form_post():
                 explanation = ''
             # Wrong format
             if len(answer.split()) < 2:
-                correction = 'Please space-separate value and unit'
+                correction = 'Please input value AND unit (space-separated)!'
                 explanation = ''
             cache['question_generated'] = False
 

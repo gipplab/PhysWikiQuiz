@@ -5,10 +5,14 @@ import pywikibot
 import SPARQLWrapper
 
 # load cleanings
-cleanings_simple = []
-with open('latex_cleanings_simple.csv') as f:
+cleanings_simple_identifier = []
+cleanings_simple_formula = []
+with open('latex_cleanings_simple_identifier.csv') as f:
     for row in csv.reader(f):
-        cleanings_simple.append((row[0],row[1]))
+        cleanings_simple_identifier.append((row[0],row[1]))
+with open('latex_cleanings_simple_formula.csv') as f:
+    for row in csv.reader(f):
+        cleanings_simple_formula.append((row[0],row[1]))
 with open('latex_cleanings_argument.txt') as f:
     cleanings_argument = f.readlines()
 
@@ -32,7 +36,7 @@ def derivative_to_division(latex_string):
             latex_string = deriv_content
     return latex_string
 
-def clean_latex(latex_string):
+def clean_latex(latex_string,mode):
     """Clean LaTeX formula for converter."""
 
     # argument cleanings
@@ -46,7 +50,11 @@ def clean_latex(latex_string):
     #latex_string = derivative_to_division(latex_string)
 
     # simple cleanings
-    for cleaning in cleanings_simple:
+    if mode == 'identifier':
+        cleanings = cleanings_simple_identifier
+    elif mode == 'formula':
+        cleanings = cleanings_simple_formula
+    for cleaning in cleanings:
         latex_string = latex_string.replace(cleaning[0],cleaning[1])
 
     return latex_string
@@ -164,7 +172,7 @@ def get_defining_formula(Wikidata_item):
     defining_formula_string = defining_formula_object[0]['mainsnak']['datavalue']['value']
 
     # clean LaTeX
-    defining_formula_string = clean_latex(defining_formula_string)
+    defining_formula_string = clean_latex(defining_formula_string,mode='formula')
 
     return defining_formula_string
 
@@ -246,14 +254,14 @@ def get_identifier_properties(Wikidata_item):
             if P == 'P7235': # 'in defining formula'
                 identifier_symbol = identifier['mainsnak']['datavalue']['value']
             elif P in ['P527', 'P4934']:  # 'has part', 'calculated from'
-                for property in ['P416', '7973', '2534', 'P7235']:
+                for property in ['P416', 'P7973', 'P2534', 'P7235']:
                 # 'quantity symbol (string)', 'quantity symbol (LaTeX)', 'defining formula', 'in defining formula'
                     try:
                         identifier_symbol = identifier['qualifiers'][property][0]['datavalue']['value']
                     except:
                         pass
             # Clean LaTeX
-            identifier_symbol = clean_latex(identifier_symbol)
+            identifier_symbol = clean_latex(identifier_symbol,mode='identifier')
 
             # Identifier unit
             identifier_unit_property = identifier_item['claims']['P4020'] # 'ISQ dimension'
