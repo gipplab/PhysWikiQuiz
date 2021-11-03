@@ -40,8 +40,10 @@
 
     <h1 style="background-color:powderblue;">PhysWikiQuiz</h1>
     <h3 align="center">Physics Exam Question Generation and Test System</h3>
+        <a href="teacher">Teacher</a>
+        <a href="student">Student</a>
 
-    <h5>Enter Formula Concept Name or QID (e.g., 'speed' or 'Q11376'):</h5>
+        <h5>Enter Formula Concept Name or QID (e.g., 'speed' or 'Q11376'):</h5>
 
     <form method="POST">
     <input name="concept" value="{{ concept }}">
@@ -52,19 +54,6 @@
 
     <form>
     <label name="question">{{ question }}</label>
-    </form>
-
-    <h5>Enter Formula Concept Question Answer:</h5>
-
-    <form method="POST">
-    <input name="answer" value="{{ answer }}">
-        <button type="submit">Answer</button>
-    </form>
-    <br>
-    <form>
-    <label name="correction">{{ correction }}</label>
-    <br><br>
-    <label name="explanation">{{ explanation }}</label>
     </form>
 
     </center>

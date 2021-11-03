@@ -7,10 +7,7 @@ import json
 
 #TODO: multilinguality employing Wikidata
 #TODO: teacher and student login and question distribution:
-#https://www.digitalocean.com/community/tutorials/
-# how-to-add-authentication-to-your-app-with-flask-login-de
-# https://hackersandslackers.com/flask-login-user-authentication/
-# https://medium.com/analytics-vidhya/creating-login-page-on-flask-9d20738d9f42
+#https://medium.com/analytics-vidhya/creating-login-page-on-flask-9d20738d9f42
 
 app = Flask(__name__)
 
@@ -22,7 +19,6 @@ def my_form():
 def my_form_post():
 
     # Init variables
-    concept = ''
     answer = ''
     correction = ''
     explanation = ''
@@ -71,7 +67,7 @@ def my_form_post():
                 unit_suffix = 'incorrect!'
             value_text = value_prefix + value_suffix
             unit_text = unit_prefix + unit_suffix
-            # TODO: add references (defining formula,Wikidata item, Wikipedia URL) to correction text
+            # TODO: add Wikipedia URL to correction text
             explanation = cache['explanation']
             correction = ' '.join([value_text,unit_text])
             # No question given
