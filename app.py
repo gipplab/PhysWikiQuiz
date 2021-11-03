@@ -5,25 +5,12 @@ import json
 #Flask forms tutorial:
 #https://web.itu.edu.tr/uyar/fad/forms.html
 
-#https://www.w3schools.com/tags/tag_label.asp
-
-#MathQA (template)
-#https://github.com/ag-gipp/MathQA
-#https://github.com/askplatypus/platypus-ui
-
 #TODO: multilinguality employing Wikidata
-#TODO: teacher and student login and question distribution
-
-#Example item issues:
-#-Hooke's law
-#-mechanical impedance
-#-tangential velocity
-#Additional issues:
-#-phase velocity (Q13824)
-#-mechanical energy (Q184550)
-
-#Example item additions:
-#-
+#TODO: teacher and student login and question distribution:
+#https://www.digitalocean.com/community/tutorials/
+# how-to-add-authentication-to-your-app-with-flask-login-de
+# https://hackersandslackers.com/flask-login-user-authentication/
+# https://medium.com/analytics-vidhya/creating-login-page-on-flask-9d20738d9f42
 
 app = Flask(__name__)
 

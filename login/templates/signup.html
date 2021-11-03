@@ -1,5 +1,3 @@
-<!-- templates/signup.html -->
-
 {% extends "base.html" %}
 
 {% block content %}
@@ -7,12 +5,13 @@
     <h3 class="title">Sign Up</h3>
     <div class="box">
         {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <div class="notification is-danger">
-                {{ messages[0] }}. Go to <a href="{{ url_for('auth.login') }}">login page</a>.
-            </div>
-        {% endif %}
+            {% if messages %}
+                <div class="notification is-danger">
+                    {{ messages[0] }}<br> Go to <a href="{{ url_for('auth.login') }}">login page</a>.
+                </div>
+            {% endif %}
         {% endwith %}
+
         <form method="POST" action="/signup">
             <div class="field">
                 <div class="control">
