@@ -1,4 +1,4 @@
-Flask==0.12.2
+Flask==2.0.2
 requests==2.26.0
 pywikibot==5.6.0
 SPARQLWrapper==1.8.2
