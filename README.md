@@ -168,7 +168,7 @@ Example query using Wikidata item name ('speed'):
 ```
 https://physwikiquiz.wmflabs.org/api/v1?name=speed
 ```
-Example query using Wikidata item QID ('Q124164):
+Example query using Wikidata item QID ('Q124164'):
 ```
 https://physwikiquiz.wmflabs.org/api/v1?qid=Q124164
 ```
