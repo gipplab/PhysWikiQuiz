@@ -163,6 +163,16 @@ sudo apt-get install antlr4
 git clone https://github.com/ag-gipp/PhysWikiQuiz.git
 ```
 
+## PhysWikiQuiz API for question generation
+Example query using Wikidata item name ('speed'):
+```
+https://physwikiquiz.wmflabs.org/api/v1?name=speed
+```
+Example query using Wikidata item QID ('Q124164):
+```
+https://physwikiquiz.wmflabs.org/api/v1?qid=Q124164
+```
+
 ## API references
 
  * [Wikidata](https://wikidata.org): A SPARQL query to the [Wikidata Query Services API](https://query.wikidata.org) retrieves lists or properties of [Wikidata items](https://en.wikipedia.org/wiki/Wikidata#Items)
