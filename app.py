@@ -1,15 +1,36 @@
-from flask import Flask, request, render_template
+from flask import Flask, render_template, request, jsonify
 from module_outputs import generate_question,correct_answer
 import json
 
-#Flask forms tutorial:
+#Flask tutorials:
 #https://web.itu.edu.tr/uyar/fad/forms.html
+#https://medium.com/analytics-vidhya/creating-login-page-on-flask-9d20738d9f42
+#https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask
 
 #TODO: multilinguality employing Wikidata
 #TODO: teacher and student login and question distribution:
-#https://medium.com/analytics-vidhya/creating-login-page-on-flask-9d20738d9f42
 
 app = Flask(__name__)
+
+# REQUEST
+
+@app.route('/api/v1', methods=['GET'])
+def api_qid():
+    # Check if a Wikidata item concept name or QID was provided as part of the URL.
+    # If QID is provided, assign it to a variable.
+    # If no QID is provided, display an error in the browser.
+    if 'name' in request.args:
+        name_qid = request.args['name']
+    elif 'qid' in request.args:
+        name_qid = request.args['qid']
+    else:
+        return "Error: No Wikidata item name or qid provided. Please specify a name or qid."
+
+    # Generate response
+    question = generate_question(name_qid)
+    question_text = question[0]
+
+    return jsonify(question_text)
 
 # POST
 
