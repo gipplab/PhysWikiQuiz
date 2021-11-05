@@ -8,7 +8,7 @@ import json
 #https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask
 
 #TODO: multilinguality employing Wikidata
-#TODO: teacher and student login and question distribution:
+#TODO: teacher and student login and question distribution
 
 app = Flask(__name__)
 
