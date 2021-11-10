@@ -1,4 +1,5 @@
 import sympy
+import re
 
 def get_lhs_identifier_properties(formula_identifiers):
     """Get left-hand side identifier name and symbol."""
@@ -37,15 +38,56 @@ def check_value(solution_value,answer_value):
 
     return value_correct
 
+def clean_unit_answer(answer_unit):
+    # find '/', only clean/works if single occurrence
+    if len(answer_unit.count('/')) == 1:
+        for delimiter in ['/(.*)', '/(.*) ', ' /(.*)', ' /(.*) ']:
+            try:
+                match = re.search(delimiter,answer_unit)
+                if match is not None:
+                    match = match.group(0)
+                    if not '^' in match:
+                        # exponent is (-)1
+                        replacement = match.replace('/','') + '^-1'
+                    else:
+                        # other exponents
+                        # remove '/'
+                        replacement = match.replace('/','')
+                        # switch exponent sign
+                        if '-' in replacement:
+                            replacement = replacement.replace('-', '')
+                        elif '+' in replacement:
+                            replacement = replacement.replace('+', '-')
+                        else:
+                            replacement = replacement.replace('^', '^-')
+                    answer_unit = answer_unit.replace(match, ' ' + replacement)
+            except:
+                pass
+
+    return answer_unit
+
 def check_unit(formula_unit_dimension,answer_unit):
     """Check if input unit corresponds to formula unit."""
     #unit_correct = answer_unit == formula_unit_dimension
     try:
+        # clean
+        #answer_unit = clean_unit_answer(answer_unit)
+        # sets (for unit sequence invariance)
         answer_units = set(answer_unit.split())
         correct_units = set(formula_unit_dimension.split())
+        # check
         unit_correct = answer_units == correct_units
 
     except:
         unit_correct = False
+
+    if not unit_correct:
+        try:
+            # check sympy unit rearrangements
+            unit_correct =\
+                sympy.sympify(answer_unit.replace(' ','*'))\
+                           == sympy.sympify(formula_unit_dimension.replace(' ','*'))
+        except:
+            pass
 
     return unit_correct

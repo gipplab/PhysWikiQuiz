@@ -1,7 +1,3 @@
-c,C
-E,e
-r,R
-I,J
 \alpha,a
 \beta,b
 \gamma,g
@@ -39,6 +35,10 @@ I,J
 \Psi,P
 \omega,w
 \Omega,O
+c,C
+E,e
+r,R
+I,J
 \boldsymbol,
 {,
 },

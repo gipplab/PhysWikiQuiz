@@ -9,6 +9,8 @@ import json
 
 #TODO: multilinguality employing Wikidata
 #TODO: teacher and student login and question distribution
+#TODO: allow for formula string input (combine with MathQA functionality)
+#TODO: fix greek to latin converted letter duplicate issue
 
 app = Flask(__name__)
 
