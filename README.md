@@ -1,8 +1,9 @@
 ## PhysWikiQuiz 
 
-We present **PhysWikiQuiz**, a Physics Exam Question Generation and Test System. The system can generate physics questions from [Wikidata](https://wikidata.org) items, given a Formula Concept Name or QID (e.g., 'speed' or 'Q11376') user input. Each question contains comprehensive details of the involved physical quantities, and randomly generated numerical values. In a consecutive step, a student can input an answer. The system then checks the correctness of the user input in terms of quantity value and unit respectively. In the last stage, the system finally generates a correct explanation of the solution, including its calculation path.
+We present [**PhysWikiQuiz**](https://physwikiquiz.wmflabs.org), a Physics Exam Question Generation and Test System. The system can generate physics questions from [Wikidata](https://wikidata.org) items, given a Formula Concept Name or QID (e.g., 'speed' or 'Q11376') user input. Each question contains comprehensive details of the involved physical quantities, and randomly generated numerical values. In a consecutive step, a student can input an answer. The system then checks the correctness of the user input in terms of quantity value and unit respectively. In the last stage, the system finally generates a correct explanation of the solution, including its calculation path.
 
-**PhysWikiQuiz** is a web-based system, implemented with Flask, a micro web-framework written in Python. The required metadata for formulae is retrieved from [Wikidata](https://wikidata.org) by means of [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) queries or [Pywikibot](https://www.mediawiki.org/wiki/Manual:Pywikibot).
+[**PhysWikiQuiz**](https://physwikiquiz.wmflabs.org) is a web-based system, implemented with Flask, a micro web-framework written in Python. The required metadata for formulae is retrieved from [Wikidata](https://wikidata.org) by means of [SPARQL](https://www.w3.org/TR/rdf-sparql-query/) queries or [Pywikibot](https://www.mediawiki.org/wiki/Manual:Pywikibot).
+The system is hosted by Wikimedia at [https://physwikiquiz.wmflabs.org](https://physwikiquiz.wmflabs.org).
 
 ## Motivation
 
@@ -20,7 +21,7 @@ Demo of example formula concept **"acceleration"**:
 
 You can quickly check the system hosted at https://physwikiquiz.wmflabs.org.
 
-You also find a video demonstration of the PhysWikiQuiz system and its evaluation [here](?) (you will be redirected to YouTube).
+You also find a video demonstration of the PhysWikiQuiz system and its evaluation [here](https://purl.org/physwikiquiz) (you will be redirected to YouTube).
 
 ## System Workflow
 
