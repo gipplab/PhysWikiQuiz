@@ -7,6 +7,7 @@
 #TODO: module5.check_value:
     # allow percentage float tolerance for answer value
 
+import benchmark_cache
 import module1_formula_and_identifier_retrieval as module1
 import module2_formula_rearrangement as module2
 import module3_identifier_value_generation as module3
@@ -35,8 +36,16 @@ def generate_question(name):
 
     # Get item from QID
     print('\nRetrieving Wikidata item...\n')
+    # Check if in benchmark sample dataset
     try:
-        item = module1.get_Wikidata_item(qid)
+        sample_items = benchmark_cache.load_benchmark_dump()
+        item = sample_items[qid]
+    except:
+        item = None
+    # Load item (json) data
+    try:
+        if item is None:
+            item = module1.get_Wikidata_item(qid)
     except:
         return 'No Wikidata item with formula found', None, None, ''
 
