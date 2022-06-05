@@ -61,7 +61,7 @@ def get_random_identifier_values(formula_identifiers,defining_formula):
         lhs_identifier_value = formula_sympy
     print('Sympy rhs: ',lhs_identifier_value)
 
-    identifier_values = [str(lhs_identifier_value)]
+    identifier_values = [float(lhs_identifier_value)]
     identifier_values.extend(rhs_identifier_values)
 
     return identifier_values

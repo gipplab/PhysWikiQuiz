@@ -31,8 +31,14 @@ def api_qid():
     # Generate response
     question = generate_question(name_qid)
     question_text = question[0]
+    identifier_values = question[1]
+    formula_unit_dimension = question[2]
+    explanation_text = question[3]
 
-    return jsonify(question_text)
+    response = {'question_text': question_text, 'identifier_values': identifier_values,
+                'formula_unit_dimension': formula_unit_dimension, 'explanation_text': explanation_text}
+
+    return jsonify(response)
 
 # POST
 
