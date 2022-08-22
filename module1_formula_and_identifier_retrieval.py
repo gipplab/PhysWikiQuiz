@@ -224,52 +224,57 @@ def get_identifier_properties(Wikidata_item):
     # Exploit identifier property claims
     for property_claim in property_claims.items():
 
-        P = property_claim[0]
-        print('Identifier properties in: ',P)
-        for identifier in property_claim[1]:
+        try:
 
-            # Identifier QID
-            identifier_qid = ''
-            if P == 'P7235': # 'in defining formula'
-                property = 'P9758' # 'symbol represents'
-                try:
-                    identifier_qid = identifier['qualifiers'][property][0]['datavalue']['value']['id']
-                except:
-                    pass
-            elif P in ['P527', 'P4934']:  # 'has part', 'calculated from'
-                try:
-                    identifier_qid = identifier['mainsnak']['datavalue']['value']['id']
-                except:
-                    pass
-            if identifier_qid == '':
-                identifier_qid = Wikidata_item['id']
+            P = property_claim[0]
+            print('Identifier properties in: ',P)
+            for identifier in property_claim[1]:
 
-            # Identifier item
-            identifier_item = get_Wikidata_item(identifier_qid)
-
-            # Identifier name
-            identifier_name = get_concept_name(identifier_item)
-
-            # Identifier symbol
-            if P == 'P7235': # 'in defining formula'
-                identifier_symbol = identifier['mainsnak']['datavalue']['value']
-            elif P in ['P527', 'P4934']:  # 'has part', 'calculated from'
-                for property in ['P416', 'P7973', 'P2534', 'P7235']:
-                # 'quantity symbol (string)', 'quantity symbol (LaTeX)', 'defining formula', 'in defining formula'
+                # Identifier QID
+                identifier_qid = ''
+                if P == 'P7235': # 'in defining formula'
+                    sub_prop = 'P9758' # 'symbol represents'
                     try:
-                        identifier_symbol = identifier['qualifiers'][property][0]['datavalue']['value']
+                        identifier_qid = identifier['qualifiers'][sub_prop][0]['datavalue']['value']['id']
                     except:
                         pass
-            # Clean LaTeX
-            identifier_symbol = clean_latex(identifier_symbol,mode='identifier')
+                elif P in ['P527', 'P4934']:  # 'has part', 'calculated from'
+                    try:
+                        identifier_qid = identifier['mainsnak']['datavalue']['value']['id']
+                    except:
+                        pass
+                if identifier_qid == '':
+                    identifier_qid = Wikidata_item['id']
 
-            # Identifier unit
-            identifier_unit_property = identifier_item['claims']['P4020'] # 'ISQ dimension'
-            identifier_unit_dimension = identifier_unit_property[0]['mainsnak']['datavalue']['value']
-            # Convert from ISQ to SI
-            identifier_unit = convert_unit_dimensions(identifier_unit_dimension)
+                # Identifier item
+                identifier_item = get_Wikidata_item(identifier_qid)
 
-            print('Identifier property: ',(identifier_name,identifier_symbol,identifier_unit))
-            identifier_properties.append((identifier_name,identifier_symbol,identifier_unit))
+                # Identifier name
+                identifier_name = get_concept_name(identifier_item)
+
+                # Identifier symbol
+                if P == 'P7235': # 'in defining formula'
+                    identifier_symbol = identifier['mainsnak']['datavalue']['value']
+                elif P in ['P527', 'P4934']:  # 'has part', 'calculated from'
+                    for property in ['P416', 'P7973', 'P2534', 'P7235']:
+                    # 'quantity symbol (string)', 'quantity symbol (LaTeX)', 'defining formula', 'in defining formula'
+                        try:
+                            identifier_symbol = identifier['qualifiers'][property][0]['datavalue']['value']
+                        except:
+                            pass
+                # Clean LaTeX
+                identifier_symbol = clean_latex(identifier_symbol,mode='identifier')
+
+                # Identifier unit
+                identifier_unit_property = identifier_item['claims']['P4020'] # 'ISQ dimension'
+                identifier_unit_dimension = identifier_unit_property[0]['mainsnak']['datavalue']['value']
+                # Convert from ISQ to SI
+                identifier_unit = convert_unit_dimensions(identifier_unit_dimension)
+
+                print('Identifier property: ',(identifier_name,identifier_symbol,identifier_unit))
+                identifier_properties.append((identifier_name,identifier_symbol,identifier_unit))
+
+        except:
+            pass
 
     return identifier_properties
